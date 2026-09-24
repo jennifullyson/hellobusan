@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>helloBusan — Your Busan trip, handled</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Crect width='44' height='44' rx='11' fill='%23e8a13c'/%3E%3Cpath d='M10 27 q6 -7 12 0 t12 0' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='29' cy='15' r='3.2' fill='white'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;--soft:#f5f6f8;--warm:#fdf7ee;--ink:#181a1f;--body:#565d6b;--muted:#8a92a0;
+    --line:#e7e9ee;--gold:#e8a13c;--gold-d:#cf8a26;--green:#14b88a;--green-d:#0e9e76;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --radius:16px;--shadow:0 8px 30px rgba(24,26,31,.08);--shadow-sm:0 3px 12px rgba(24,26,31,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--body);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;font-size:16px}
+  h1,h2,h3,h4{color:var(--ink);font-weight:800;line-height:1.15;letter-spacing:-.02em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+
+  .btn{display:inline-flex;align-items:center;gap:9px;cursor:pointer;font-family:inherit;font-weight:600;font-size:15px;
+    padding:14px 26px;border-radius:12px;border:1.5px solid transparent;transition:.2s ease;background:none}
+  .btn-primary{background:var(--ink);color:#fff}
+  .btn-primary:hover{background:#000;transform:translateY(-1px)}
+  .btn-coral,.btn-gold{background:var(--gold);color:#fff}
+  .btn-coral:hover,.btn-gold:hover{background:var(--gold-d);transform:translateY(-1px)}
+  .btn-green{background:var(--green);color:#fff}
+  .btn-green:hover{background:var(--green-d);transform:translateY(-1px)}
+  .btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-1px)}
+  .link-more{font-weight:600;font-size:14px;color:var(--gold-d);cursor:pointer;display:inline-flex;gap:6px;align-items:center;transition:.2s}
+  .link-more:hover{gap:10px}
+
+  /* header */
+  header.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:10px;cursor:pointer}
+  .logo-mark{flex:none;border-radius:11px}
+  .wordmark{font-weight:800;font-size:21px;letter-spacing:-.02em;color:var(--ink)}
+  .wordmark b{color:var(--gold)}
+  .nav-links{display:flex;gap:6px;align-items:center}
+  .nav-top{font-weight:500;font-size:15px;color:var(--body);padding:9px 15px;border-radius:10px;transition:.2s;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+  .nav-top:hover{background:var(--soft);color:var(--ink)}
+  .nav-top.active-link{color:var(--ink);font-weight:600}
+  .caret{font-size:9px;opacity:.6}
+  .nav-cta{background:var(--gold);color:#fff;font-weight:600;padding:10px 20px;border-radius:10px;transition:.2s}
+  .nav-cta:hover{background:var(--gold-d)}
+  .nav-drop{position:relative}
+  .drop-menu{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:250px;background:#fff;
+    border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:8px;opacity:0;visibility:hidden;transition:.2s;z-index:70}
+  .drop-menu::before{content:"";position:absolute;top:-8px;left:0;right:0;height:8px}
+  .nav-drop:hover .drop-menu{opacity:1;visibility:visible;top:calc(100% + 6px)}
+  .drop-menu a{display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:10px;font-weight:500;font-size:14.5px;color:var(--ink);transition:.15s}
+  .drop-menu a .di{font-size:18px}
+  .drop-menu a:hover{background:var(--soft)}
+  .menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--ink)}
+
+  .page{display:none}
+  .page.active{display:block;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+  /* hero */
+  .hero{background:radial-gradient(90% 120% at 85% 0%,#fdf1dd,transparent 60%),linear-gradient(180deg,#fff,var(--warm))}
+  .hero-inner{padding:82px 0 74px;max-width:760px}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-weight:600;font-size:13px;color:var(--gold-d);box-shadow:var(--shadow-sm)}
+  .hero h1{font-size:clamp(2.4rem,6vw,4rem);margin:22px 0 20px}
+  .hero h1 span{color:var(--gold)}
+  .hero p.lead{font-size:clamp(1.05rem,2vw,1.25rem);color:var(--body);max-width:600px}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+  .hero-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:40px}
+  .hero-chips a{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;
+    padding:9px 16px;font-weight:600;font-size:14px;color:var(--ink);cursor:pointer;transition:.2s}
+  .hero-chips a:hover{border-color:var(--gold);color:var(--gold-d);transform:translateY(-2px)}
+
+  /* page hero (inner) */
+  .page-hero{background:var(--soft);border-bottom:1px solid var(--line);padding:56px 0}
+  .page-hero .crumb{font-weight:700;font-size:13px;letter-spacing:.02em;color:var(--gold-d);margin-bottom:12px;text-transform:uppercase}
+  .page-hero h1{font-size:clamp(2rem,4.5vw,3rem)}
+  .page-hero p{color:var(--body);max-width:620px;font-size:1.08rem;margin-top:14px}
+
+  section.block{padding:76px 0}
+  .svc-section{scroll-margin-top:80px}
+  .svc-section.alt{background:var(--soft)}
+  .section-head{max-width:660px;margin-bottom:44px}
+  .section-head.center{margin:0 auto 44px;text-align:center}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;letter-spacing:.02em;text-transform:uppercase;color:var(--gold-d);margin-bottom:14px}
+  .section-head h2{font-size:clamp(1.7rem,3.6vw,2.4rem)}
+  .section-head p{color:var(--body);font-size:1.06rem;margin-top:14px}
+
+  /* home feature grid */
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .feat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;cursor:pointer;transition:.25s ease;display:flex;flex-direction:column;gap:12px}
+  .feat:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+  .feat .ficon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;background:var(--warm)}
+  .feat h3{font-size:1.22rem}
+  .feat p{color:var(--body);font-size:.96rem;flex:1}
+  .feat .link-more{margin-top:2px}
+
+  /* chips (filters) */
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+  .chip{cursor:pointer;background:#fff;border:1.5px solid var(--line);border-radius:999px;font-family:inherit;font-weight:600;font-size:14px;color:var(--body);padding:9px 18px;transition:.2s}
+  .chip:hover{border-color:var(--gold)}
+  .chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+  /* cards */
+  .grid{display:grid;gap:22px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:.25s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+  .card .thumb{height:140px;position:relative;display:flex;align-items:center;justify-content:center;font-size:50px}
+  .card .thumb .tag{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92);border-radius:999px;font-weight:700;font-size:11px;color:var(--ink);padding:5px 12px}
+  .card .thumb .price{position:absolute;bottom:14px;right:14px;background:var(--ink);color:#fff;border-radius:999px;font-weight:700;font-size:12px;padding:5px 12px}
+  .card .body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:9px;flex:1}
+  .card .body h3{font-size:1.15rem}
+  .card .meta{font-weight:600;font-size:.82rem;color:var(--gold-d)}
+  .card .desc{font-size:.93rem;color:var(--body);flex:1}
+  .card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:6px;padding-top:14px;border-top:1px solid var(--line)}
+  .rating{font-size:.84rem;color:var(--muted);font-weight:500}
+  .rating b{color:var(--gold-d);font-weight:700}
+  .taglist{display:flex;gap:7px;flex-wrap:wrap}
+  .taglist span{background:var(--soft);border-radius:999px;font-weight:600;font-size:11px;color:var(--body);padding:4px 10px}
+  .tint-a{background:#eef6f4}.tint-b{background:#eef2fb}.tint-c{background:#fdf3e6}.tint-d{background:#fdeef2}.tint-e{background:#f1eefb}.tint-f{background:#eafaf4}
+
+  /* service offer grid */
+  .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .svc-grid.three{grid-template-columns:repeat(3,1fr)}
+  .svc-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;display:flex;flex-direction:column;gap:11px;transition:.25s}
+  .svc-card:hover{box-shadow:var(--shadow);border-color:transparent;transform:translateY(-3px)}
+  .svc-card .sc-ic{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:24px;background:var(--warm);margin-bottom:4px}
+  .svc-card h3{font-size:1.18rem}
+  .svc-card p{color:var(--body);font-size:.95rem}
+  .badges{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+  .badges span{background:var(--warm);border:1px solid #f2e4cd;border-radius:999px;padding:9px 18px;font-weight:600;font-size:13.5px;color:var(--gold-d)}
+  .svc-note{margin-top:22px;color:var(--body);font-size:.98rem;display:flex;gap:9px;align-items:flex-start}
+
+  /* reservation sub-tabs */
+  .subtabs{display:inline-flex;gap:6px;margin-bottom:30px;background:var(--soft);border-radius:12px;padding:6px}
+  .subtab{cursor:pointer;background:none;border:none;font-family:inherit;font-weight:600;font-size:14px;color:var(--body);padding:11px 22px;border-radius:9px;transition:.2s}
+  .subtab:hover{color:var(--ink)}
+  .subtab.active{background:#fff;color:var(--ink);box-shadow:var(--shadow-sm)}
+  .subpanel{display:none}
+  .subpanel.active{display:block;animation:fade .3s ease}
+
+  /* forms */
+  .field{margin-bottom:18px}
+  .field label{display:block;font-weight:600;font-size:13px;margin-bottom:7px;color:var(--ink)}
+  .field input,.field select,textarea{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:11px;
+    font-family:inherit;font-size:15px;color:var(--ink);background:#fff;transition:.2s}
+  .field input::placeholder,textarea::placeholder{color:#aab1bd}
+  .field input:focus,.field select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(232,161,60,.15)}
+  .field select{cursor:pointer}
+  textarea{resize:vertical;min-height:110px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .confirm-msg{display:none;background:#eafaf4;border:1px solid #b7e8d6;color:#0e7355;border-radius:12px;padding:16px 18px;margin-top:16px;font-size:.94rem}
+  .confirm-msg.show{display:block;animation:fade .3s ease}
+  .confirm-msg b{font-weight:700}
+
+  /* booking */
+  .booking{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+  .booking-info{background:var(--warm);border:1px solid #f2e4cd;border-radius:var(--radius);padding:34px 32px}
+  .booking-info h3{font-size:1.4rem;margin-bottom:10px}
+  .booking-info>p{color:var(--body);margin-bottom:22px}
+  .perk{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-top:1px solid #f0e3cd}
+  .perk .pi{font-size:20px;flex:none}
+  .perk b{display:block;color:var(--ink);font-size:1rem}
+  .perk span{font-size:.88rem;color:var(--body)}
+  .booking-form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 32px}
+  .booking-form h3{font-size:1.3rem;margin-bottom:4px}
+  .booking-form .sub{color:var(--body);font-size:.92rem;margin-bottom:22px}
+  .estimate{background:var(--soft);border-radius:12px;padding:16px 18px;margin:6px 0 18px;display:flex;align-items:center;justify-content:space-between}
+  .estimate .lbl{font-weight:600;font-size:13px;color:var(--body)}
+  .estimate .amt{font-size:1.5rem;font-weight:800;color:var(--ink)}
+  .estimate .amt small{font-size:.78rem;font-weight:600;color:var(--muted)}
+
+  /* concierge / business panels (light) */
+  .panel{background:var(--warm);border:1px solid #f2e4cd;border-radius:20px;padding:40px 40px}
+  .cc-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 32px;margin:8px 0 4px}
+  .cc-list li{font-size:.97rem;color:var(--ink);padding:11px 0 11px 30px;position:relative;border-bottom:1px solid #f0e3cd}
+  .cc-list li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+  .inquiry{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 32px;scroll-margin-top:80px}
+  .inquiry h3{font-size:1.35rem;margin-bottom:4px}
+  .inquiry .sub{color:var(--body);font-size:.92rem;margin-bottom:22px}
+  .inq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .inq-full{grid-column:1 / -1}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:44px;align-items:start}
+  .ci-card{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:14px;transition:.2s}
+  .ci-card:hover{box-shadow:var(--shadow-sm)}
+  .ci-ico{flex:none;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:21px;background:var(--warm)}
+  .ci-card h4{font-size:1rem;color:var(--ink);margin-bottom:2px}
+  .ci-card p{font-size:.93rem;color:var(--body)}
+  .ci-card a{color:var(--gold-d);font-weight:600}
+  .socials{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+  .socials a{background:var(--soft);border-radius:999px;padding:9px 18px;font-weight:600;font-size:13.5px;color:var(--body);transition:.2s;cursor:pointer}
+  .socials a:hover{background:var(--warm);color:var(--gold-d)}
+  .contact-form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 32px}
+  .contact-form h3{font-size:1.3rem;margin-bottom:4px}
+  .contact-form .sub{color:var(--body);font-size:.92rem;margin-bottom:22px}
+
+  /* footer */
+  footer{background:var(--ink);color:#c7ccd6;padding:64px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px}
+  footer h4{color:#fff;font-size:.86rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:16px}
+  footer .brand .wordmark{color:#fff}
+  footer .foot-about{font-size:.92rem;line-height:1.75;max-width:280px;margin-top:16px;color:#9aa2b0}
+  footer ul{list-style:none}
+  footer ul li{margin-bottom:11px}
+  footer ul a{font-size:.92rem;color:#c7ccd6;transition:.2s;cursor:pointer}
+  footer ul a:hover{color:var(--gold)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;font-size:.85rem;color:#8891a0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media(max-width:940px){
+    .g3,.feat-grid,.svc-grid.three{grid-template-columns:repeat(2,1fr)}
+    .booking,.cc-list,.inq-grid{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr;gap:32px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:600px){
+    .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:4px;padding:16px;border-bottom:1px solid var(--line);max-height:82vh;overflow:auto}
+    .nav-links.open{display:flex}
+    .menu-toggle{display:block}
+    .nav-cta{text-align:center}
+    .drop-menu{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;border:none;min-width:0;padding:4px 0 4px 12px}
+    .g3,.feat-grid,.svc-grid,.svc-grid.three,.row2,.inq-grid{grid-template-columns:1fr}
+    .subtabs{width:100%}.subtab{flex:1}
+    .hero-inner{padding:56px 0 52px}
+    .foot-grid{grid-template-columns:1fr}
+    section.block{padding:56px 0}
+    .panel,.booking-info,.booking-form,.inquiry,.contact-form{padding:26px 22px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand" data-page="home">
+      <svg class="logo-mark" width="38" height="38" viewBox="0 0 44 44" aria-hidden="true">
+        <rect width="44" height="44" rx="11" fill="#e8a13c"/>
+        <path d="M10 27 q6 -7 12 0 t12 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="29" cy="15" r="3.2" fill="#fff"/>
+      </svg>
+      <span class="wordmark">hello<b>Busan</b></span>
+    </div>
+    <button class="menu-toggle" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <nav class="nav-links" id="navlinks">
+      <a class="nav-top" data-page="home">Home</a>
+      <div class="nav-drop">
+        <a class="nav-top" data-page="services">Services <span class="caret">▼</span></a>
+        <div class="drop-menu">
+          <a data-page="services" data-section="svc-tourguide"><span class="di">🧭</span>Private Tour Guide</a>
+          <a data-page="services" data-section="svc-reservation"><span class="di">📅</span>Reservation</a>
+          <a data-page="services" data-section="svc-shopping"><span class="di">🛍️</span>Shopping</a>
+          <a data-page="services" data-section="svc-translation"><span class="di">💬</span>Translation</a>
+          <a data-page="services" data-section="svc-medical"><span class="di">🏥</span>Medical Tour</a>
+          <a data-page="services" data-section="svc-vip"><span class="di">✨</span>VIP Concierge</a>
+        </div>
+      </div>
+      <a class="nav-top" data-page="business">For Business</a>
+      <a class="nav-cta" data-page="contact">Contact us</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HOME ============ -->
+<section class="page active" id="page-home">
+  <div class="hero">
+    <div class="wrap hero-inner">
+      <span class="pill">🌊 Your local team in Busan</span>
+      <h1>Your Busan trip, <span>handled.</span></h1>
+      <p class="lead">Private guides, easy reservations, shopping, translation, medical visits, and a concierge who takes care of the details — so you can just enjoy Busan.</p>
+      <div class="hero-cta">
+        <a data-page="services" class="btn btn-coral">See what we do</a>
+        <a data-page="contact" class="btn btn-ghost">Talk to us</a>
+      </div>
+      <div class="hero-chips">
+        <a data-page="services" data-section="svc-tourguide">🧭 Tour guide</a>
+        <a data-page="services" data-section="svc-reservation">📅 Reservations</a>
+        <a data-page="services" data-section="svc-shopping">🛍️ Shopping</a>
+        <a data-page="services" data-section="svc-translation">💬 Translation</a>
+        <a data-page="services" data-section="svc-medical">🏥 Medical</a>
+        <a data-page="services" data-section="svc-vip">✨ VIP concierge</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="kicker">What we do</span>
+        <h2>Six ways we make Busan easy</h2>
+        <p>One local team, everything sorted. Pick what you need — or let us handle it all.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat" data-page="services" data-section="svc-tourguide"><div class="ficon">🧭</div><h3>Private Tour Guide</h3><p>Experienced guides in English, German & Korean — every day built around what you want to see.</p><span class="link-more">Learn more →</span></div>
+        <div class="feat" data-page="services" data-section="svc-reservation"><div class="ficon">📅</div><h3>Reservation</h3><p>Hotels, restaurants, and a private car — booked for you, no Korean or foreign-card headaches.</p><span class="link-more">Learn more →</span></div>
+        <div class="feat" data-page="services" data-section="svc-shopping"><div class="ficon">🛍️</div><h3>Shopping</h3><p>Personal shopping from big department stores to K-beauty and local markets, tax refund included.</p><span class="link-more">Learn more →</span></div>
+        <div class="feat" data-page="services" data-section="svc-translation"><div class="ficon">💬</div><h3>Translation</h3><p>Interpreters and document translation in English, Korean, Chinese, and Japanese.</p><span class="link-more">Learn more →</span></div>
+        <div class="feat" data-page="services" data-section="svc-medical"><div class="ficon">🏥</div><h3>Medical Tour</h3><p>Check-ups, skincare, dental, and wellness — appointments and an interpreter all arranged.</p><span class="link-more">Learn more →</span></div>
+        <div class="feat" data-page="services" data-section="svc-vip"><div class="ficon">✨</div><h3>VIP Concierge</h3><p>One person to call for anything — we handle the rest, day or night.</p><span class="link-more">Learn more →</span></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="page" id="page-services">
+  <div class="page-hero"><div class="wrap"><div class="crumb">Our services</div><h1>Everything you need in Busan</h1><p>From your arrival to your last day — guiding, booking, shopping, translating, and looking after your health.</p></div></div>
+
+  <!-- I Tour Guide -->
+  <section class="block svc-section" id="svc-tourguide">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">🧭 Private Tour Guide</span><h2>Experienced guides, in your language</h2><p>Explore Busan with a private guide who speaks your language — English, German, or Korean — and builds the day around what you want to see and do.</p></div>
+      <div class="svc-grid three">
+        <div class="svc-card"><div class="sc-ic">🗺️</div><h3>Experienced local guides</h3><p>Guides who know Busan inside out — the history, the hidden corners, and the spots worth slowing down for.</p></div>
+        <div class="svc-card"><div class="sc-ic">🗣️</div><h3>English · German · Korean</h3><p>Pick a guide in your own language, so nothing gets lost and every story makes sense.</p></div>
+        <div class="svc-card"><div class="sc-ic">✏️</div><h3>Curated to your wishes</h3><p>No fixed itinerary. We shape each day around your interests, your pace, and exactly what you'd like to do.</p></div>
+      </div>
+      <div class="badges"><span>🗣️ English · German · Korean</span><span>✨ Curated to your needs & wishes</span></div>
+      <div style="margin-top:26px"><a data-page="contact" class="btn btn-coral">Book a guide</a></div>
+    </div>
+  </section>
+
+  <!-- II Reservation -->
+  <section class="block svc-section alt" id="svc-reservation">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">📅 Reservation</span><h2>Booked for you — stay, table, and car</h2><p>Korean-only site? Foreign card rejected? We book it for you, so you don't have to figure it out.</p></div>
+      <div class="subtabs" id="resTabs">
+        <button class="subtab active" data-tab="res-stays">Stays</button>
+        <button class="subtab" data-tab="res-dining">Dining</button>
+        <button class="subtab" data-tab="res-car">Private Car</button>
+      </div>
+
+      <div class="subpanel active" id="res-stays">
+        <div class="chips" id="stayChips">
+          <button class="chip active" data-filter="all">All areas</button>
+          <button class="chip" data-filter="beach">Beach</button>
+          <button class="chip" data-filter="city">City centre</button>
+          <button class="chip" data-filter="views">Bridge views</button>
+          <button class="chip" data-filter="local">Old town</button>
+        </div>
+        <div class="grid g3" id="stayGrid"></div>
+      </div>
+
+      <div class="subpanel" id="res-dining">
+        <div class="chips" id="foodChips">
+          <button class="chip active" data-filter="all">Everything</button>
+          <button class="chip" data-filter="signature">Signature</button>
+          <button class="chip" data-filter="seafood">Seafood</button>
+          <button class="chip" data-filter="street">Street food</button>
+          <button class="chip" data-filter="noodles">Noodles</button>
+        </div>
+        <div class="grid g3" id="foodGrid"></div>
+      </div>
+
+      <div class="subpanel" id="res-car">
+        <div class="booking">
+          <div class="booking-info">
+            <h3>Private car & driver</h3>
+            <p>An English-speaking local driver, a fixed price, and a car ready when you are.</p>
+            <div class="perk"><span class="pi">🧑‍✈️</span><div><b>English-speaking drivers</b><span>Friendly locals who know the city</span></div></div>
+            <div class="perk"><span class="pi">💳</span><div><b>Fixed, upfront price</b><span>No meters, no surprises</span></div></div>
+            <div class="perk"><span class="pi">🛬</span><div><b>Airport pickup & day trips</b><span>From Gimhae transfers to full-day tours</span></div></div>
+            <div class="perk"><span class="pi">🕐</span><div><b>Available 24/7</b><span>Free cancellation up to 24 hours before</span></div></div>
+          </div>
+          <div class="booking-form">
+            <h3>Get an instant price</h3>
+            <p class="sub">Tell us your trip and we'll price it right away.</p>
+            <form id="taxiForm">
+              <div class="field"><label for="service">Service</label>
+                <select id="service">
+                  <option value="airport" data-base="65000">Airport pickup (Gimhae ⇄ city)</option>
+                  <option value="halfday" data-base="140000">Half-day tour (4 hours)</option>
+                  <option value="fullday" data-base="240000">Full-day tour (8 hours)</option>
+                  <option value="pointtopoint" data-base="22000">Single ride</option>
+                </select></div>
+              <div class="field"><label for="pickup">Pickup</label><input id="pickup" type="text" placeholder="e.g. Gimhae International Airport" value="Gimhae International Airport"></div>
+              <div class="field" id="destField"><label for="dest">Destination</label>
+                <select id="dest">
+                  <option>Haeundae Beach</option><option>Seomyeon (city centre)</option><option>Gwangalli Beach</option><option>Nampo-dong / Jagalchi</option>
+                  <option>Coast & beaches day</option><option>Culture & old town day</option><option>Temples & nature day</option>
+                </select></div>
+              <div class="row2">
+                <div class="field"><label for="date">Date</label><input id="date" type="date"></div>
+                <div class="field"><label for="time">Time</label><input id="time" type="time" value="10:00"></div>
+              </div>
+              <div class="row2">
+                <div class="field"><label for="vehicle">Vehicle</label>
+                  <select id="vehicle"><option value="1">Sedan · up to 3</option><option value="1.35">SUV · up to 5</option><option value="1.7">Van · up to 9</option></select></div>
+                <div class="field"><label for="pax">Guests</label>
+                  <select id="pax"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></div>
+              </div>
+              <div class="estimate"><span class="lbl">Estimated price</span><span class="amt" id="fare">₩65,000 <small id="fareUsd">≈ $48</small></span></div>
+              <button type="submit" class="btn btn-coral" style="width:100%;justify-content:center">Request this ride</button>
+              <div class="confirm-msg" id="confirmMsg"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- III Shopping -->
+  <section class="block svc-section" id="svc-shopping">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">🛍️ Shopping</span><h2>Shopping made easy</h2><p>From the world's biggest department store to hidden market lanes — with a personal shopper, translation, and tax refunds sorted.</p></div>
+      <div class="svc-grid">
+        <div class="svc-card"><div class="sc-ic">🏬</div><h3>Department stores & luxury</h3><p>Shinsegae Centum City — the world's largest department store — plus Lotte and flagship boutiques, with a personal shopper.</p></div>
+        <div class="svc-card"><div class="sc-ic">💄</div><h3>K-beauty & skincare</h3><p>The best skincare, cosmetics, and fragrance shops, with guidance and translation on hand.</p></div>
+        <div class="svc-card"><div class="sc-ic">🛒</div><h3>Markets & vintage</h3><p>Gukje and Bupyeong markets, antiques, and the local lanes only insiders know.</p></div>
+        <div class="svc-card"><div class="sc-ic">📦</div><h3>Duty-free & delivery</h3><p>VIP duty-free access and delivery to your hotel or the airport, so you travel light.</p></div>
+      </div>
+      <div class="svc-note">💡 Tax-refund paperwork, sizing, and shipping abroad — all handled for you.</div>
+    </div>
+  </section>
+
+  <!-- IV Translation -->
+  <section class="block svc-section alt" id="svc-translation">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">💬 Translation</span><h2>Never lost in translation</h2><p>Professional interpreters and translators for meetings, clinics, and everyday moments.</p></div>
+      <div class="svc-grid three">
+        <div class="svc-card"><div class="sc-ic">🤝</div><h3>Live interpretation</h3><p>Meetings, negotiations, and site visits, with a professional right beside you.</p></div>
+        <div class="svc-card"><div class="sc-ic">🩺</div><h3>Medical interpretation</h3><p>We come with you to hospitals and clinics, so every visit is clear.</p></div>
+        <div class="svc-card"><div class="sc-ic">📄</div><h3>Document translation</h3><p>Contracts, certificates, and itineraries — translated quickly and accurately.</p></div>
+      </div>
+      <div class="badges"><span>🗣️ English · Korean · Chinese · Japanese</span><span>📞 Phone interpretation, any time</span></div>
+    </div>
+  </section>
+
+  <!-- V Medical Tour -->
+  <section class="block svc-section" id="svc-medical">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">🏥 Medical Tour</span><h2>Top care, fully arranged</h2><p>Korea is a world leader in medicine and skincare. We book the appointments, bring the interpreter, and sort the transport and aftercare.</p></div>
+      <div class="svc-grid">
+        <div class="svc-card"><div class="sc-ic">🩺</div><h3>Health check-ups</h3><p>Full screenings and diagnostics at Busan's leading hospitals, around your schedule.</p></div>
+        <div class="svc-card"><div class="sc-ic">✨</div><h3>Skincare & aesthetics</h3><p>Trusted skin, cosmetic, and anti-ageing clinics, with honest guidance and full privacy.</p></div>
+        <div class="svc-card"><div class="sc-ic">🦷</div><h3>Dental care</h3><p>Implants, whitening, and cosmetic dentistry from accredited specialists.</p></div>
+        <div class="svc-card"><div class="sc-ic">🌿</div><h3>Wellness & recovery</h3><p>Spa, Korean medicine, and restful recovery stays to round off your visit.</p></div>
+      </div>
+      <div class="svc-note">💡 A coordinator and medical interpreter stay with you from first appointment to aftercare.</div>
+    </div>
+  </section>
+
+  <!-- VI VIP Concierge -->
+  <section class="block svc-section alt" id="svc-vip">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">✨ VIP Concierge</span><h2>One person for anything you need</h2><p>Your own concierge in Busan — from a last-minute table to a full custom trip. You ask, we handle it.</p></div>
+      <div class="panel">
+        <ul class="cc-list">
+          <li>Personal guide & private driver</li>
+          <li>Top restaurants & hard-to-get reservations</li>
+          <li>Hanok stays, yacht charters & private spa</li>
+          <li>Tickets, events & after-hours access</li>
+          <li>Personal shopping & translation</li>
+          <li>Anything else — just ask</li>
+        </ul>
+        <div class="inquiry" id="inquiryForm">
+          <h3>Tell us what you need</h3>
+          <p class="sub">Send us a few details and we'll get back to you within 24 hours.</p>
+          <form id="conciergeForm">
+            <div class="inq-grid">
+              <div class="field"><label for="cName">Name</label><input id="cName" type="text" placeholder="Your name" required></div>
+              <div class="field"><label for="cEmail">Email</label><input id="cEmail" type="email" placeholder="you@example.com" required></div>
+              <div class="field"><label for="cInterest">What you need</label>
+                <select id="cInterest"><option>VIP concierge (everything)</option><option>Private tour guide</option><option>Shopping</option><option>Medical tour</option><option>Translation</option><option>Something else</option></select></div>
+              <div class="field"><label for="cDates">Travel dates (approx.)</label><input id="cDates" type="text" placeholder="e.g. mid-September, 4 days"></div>
+              <div class="field inq-full"><label for="cMsg">Tell us more</label><textarea id="cMsg" placeholder="Group size, interests, budget — anything helps us plan."></textarea></div>
+            </div>
+            <button type="submit" class="btn btn-coral">Send request</button>
+            <div class="confirm-msg" id="cConfirm"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ FOR BUSINESS ============ -->
+<section class="page" id="page-business">
+  <div class="page-hero"><div class="wrap"><div class="crumb">For business</div><h1>Doing business in Korea? We'll help.</h1><p>Here for work, or want to connect with Korean companies? We set up the introductions, the interpreters, and the on-the-ground support.</p></div></div>
+  <section class="block">
+    <div class="wrap">
+      <div class="panel">
+        <ul class="cc-list">
+          <li>Introductions to partners & suppliers</li>
+          <li>Interpreters & meeting coordination</li>
+          <li>Market visits, factory tours & networking</li>
+          <li>Conference & delegation support</li>
+          <li>Corporate transport & concierge</li>
+          <li>Document translation & follow-up</li>
+        </ul>
+        <div class="inquiry" id="bizInquiry">
+          <h3>Tell us about your business</h3>
+          <p class="sub">Share your goals and we'll get back to you within 24 hours.</p>
+          <form id="bizForm">
+            <div class="inq-grid">
+              <div class="field"><label for="bName">Name</label><input id="bName" type="text" placeholder="Your name" required></div>
+              <div class="field"><label for="bEmail">Work email</label><input id="bEmail" type="email" placeholder="you@company.com" required></div>
+              <div class="field"><label for="bCompany">Company</label><input id="bCompany" type="text" placeholder="Company name"></div>
+              <div class="field"><label for="bNeed">What you need</label>
+                <select id="bNeed"><option>Introductions to Korean companies</option><option>Interpreter & meeting support</option><option>Market visit / delegation</option><option>Document translation</option><option>Executive transport</option><option>Something else</option></select></div>
+              <div class="field inq-full"><label for="bMsg">Your goals</label><textarea id="bMsg" placeholder="Industry, companies of interest, dates, and what a good trip looks like."></textarea></div>
+            </div>
+            <button type="submit" class="btn btn-coral">Send request</button>
+            <div class="confirm-msg" id="bConfirm"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="page" id="page-contact">
+  <div class="page-hero"><div class="wrap"><div class="crumb">Contact</div><h1>Talk to us</h1><p>Questions about a service or booking? We usually reply within a few hours.</p></div></div>
+  <section class="block">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="ci-card"><div class="ci-ico">✉️</div><div><h4>Email</h4><p><a href="mailto:hello@hellobusan.com">hello@hellobusan.com</a> · reply within a few hours</p></div></div>
+          <div class="ci-card"><div class="ci-ico">📞</div><div><h4>Phone</h4><p><a href="tel:+82511234567">+82 51-123-4567</a> · daily 8:00–22:00 KST</p></div></div>
+          <div class="ci-card"><div class="ci-ico">💬</div><div><h4>KakaoTalk</h4><p>@helloBusan · fastest for quick questions</p></div></div>
+          <div class="ci-card"><div class="ci-ico">📍</div><div><h4>Office</h4><p>Haeundae-gu, Busan · near Haeundae Beach Station, Exit 3</p></div></div>
+          <div class="ci-card"><div class="ci-ico">🕐</div><div><h4>Hours</h4><p>Booking support 24/7 · office visits by appointment</p></div></div>
+          <div class="socials">
+            <a data-page="contact">Instagram</a><a data-page="contact">YouTube</a><a data-page="contact">WhatsApp</a><a data-page="contact">Kakao</a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Send a message</h3>
+          <p class="sub">Fill this in and we'll reply by email.</p>
+          <form id="msgForm">
+            <div class="row2">
+              <div class="field"><label for="ctName">Name</label><input id="ctName" type="text" placeholder="Your name" required></div>
+              <div class="field"><label for="ctEmail">Email</label><input id="ctEmail" type="email" placeholder="you@example.com" required></div>
+            </div>
+            <div class="field"><label for="ctTopic">Subject</label>
+              <select id="ctTopic"><option>General question</option><option>Private tour guide</option><option>Reservation (stay, dining, car)</option><option>Shopping</option><option>Translation</option><option>Medical tour</option><option>VIP concierge</option><option>For business</option></select></div>
+            <div class="field"><label for="ctMsg">Message</label><textarea id="ctMsg" placeholder="How can we help?" required></textarea></div>
+            <button type="submit" class="btn btn-coral" style="width:100%;justify-content:center">Send message</button>
+            <div class="confirm-msg" id="ctConfirm"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" data-page="home" style="cursor:pointer">
+          <svg class="logo-mark" width="34" height="34" viewBox="0 0 44 44" aria-hidden="true">
+            <rect width="44" height="44" rx="11" fill="#e8a13c"/>
+            <path d="M10 27 q6 -7 12 0 t12 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="29" cy="15" r="3.2" fill="#fff"/>
+          </svg>
+          <span class="wordmark">hello<b>Busan</b></span>
+        </div>
+        <p class="foot-about">Your local team in Busan — guides, reservations, shopping, translation, medical, and a concierge for anything else.</p>
+      </div>
+      <div><h4>Services</h4><ul>
+        <li><a data-page="services" data-section="svc-tourguide">Private Tour Guide</a></li>
+        <li><a data-page="services" data-section="svc-reservation">Reservation</a></li>
+        <li><a data-page="services" data-section="svc-shopping">Shopping</a></li>
+        <li><a data-page="services" data-section="svc-translation">Translation</a></li>
+        <li><a data-page="services" data-section="svc-medical">Medical Tour</a></li>
+        <li><a data-page="services" data-section="svc-vip">VIP Concierge</a></li></ul></div>
+      <div><h4>Company</h4><ul>
+        <li><a data-page="home">Home</a></li>
+        <li><a data-page="business">For Business</a></li>
+        <li><a data-page="contact">Contact</a></li></ul></div>
+      <div><h4>Get in touch</h4><ul>
+        <li><a data-page="contact">Email us</a></li>
+        <li><a data-page="contact">KakaoTalk</a></li>
+        <li><a data-page="contact">Office</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 helloBusan — a demo travel-concierge site.</span>
+      <span>Busan · 부산 · South Korea</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------------- DATA ---------------- */
+const stays = [
+  {name:"Haeundae Beachfront Stay",area:"Haeundae",cats:["beach"],icon:"🏖️",tint:"tint-a",price:"₩180k",rating:"4.9",reviews:"1,240",desc:"Ocean views steps from Busan's most famous beach. Cafés, the aquarium, and the Blue Line Park at your door.",tags:["Ocean view","Beachfront"]},
+  {name:"Gwangalli Bridge-View Loft",area:"Gwangalli",cats:["beach","views"],icon:"🌉",tint:"tint-b",price:"₩130k",rating:"4.8",reviews:"860",desc:"Big windows facing the Gwangan Bridge light show, above a lively café and dining street.",tags:["Bridge view","Nightlife"]},
+  {name:"Seomyeon Central Apartment",area:"Seomyeon",cats:["city"],icon:"🏙️",tint:"tint-c",price:"₩95k",rating:"4.7",reviews:"1,510",desc:"The transit heart of the city — two subway lines, shopping, and street food within five minutes.",tags:["Metro hub","Central"]},
+  {name:"Nampo-dong Old-Town Stay",area:"Nampo-dong",cats:["local","views"],icon:"🏮",tint:"tint-d",price:"₩85k",rating:"4.6",reviews:"640",desc:"Steps from Jagalchi Market, BIFF Square, and Gukje Market — old-Busan character by the harbour.",tags:["Old town","Markets"]},
+  {name:"Songdo Seaside Retreat",area:"Songdo",cats:["beach","local"],icon:"🚡",tint:"tint-f",price:"₩110k",rating:"4.8",reviews:"420",desc:"A quieter beach with a scenic cable car and coastal skywalk — relaxed and crowd-free.",tags:["Quiet beach","Cable car"]},
+  {name:"Nampo Boutique Mini-Hotel",area:"Nampo-dong",cats:["city","local"],icon:"🛎️",tint:"tint-e",price:"₩70k",rating:"4.5",reviews:"980",desc:"Smart, compact, and great value right in the old downtown — ideal for solo travellers.",tags:["Budget","Solo-friendly"]},
+];
+const foods = [
+  {name:"Dwaeji Gukbap",en:"Pork & rice soup",cats:["signature"],icon:"🍲",desc:"Busan's soul food: milky pork-bone broth with rice and tender pork, seasoned to your taste.",where:"Seomyeon Gukbap Alley",price:"₩9,000"},
+  {name:"Milmyeon",en:"Cold wheat noodles",cats:["signature","noodles"],icon:"🍜",desc:"Born in Busan — chewy wheat noodles in an icy, tangy broth. The city's summer favourite.",where:"Gaya Milmyeon, Seomyeon",price:"₩8,000"},
+  {name:"Ssiat Hotteok",en:"Seed-filled pancake",cats:["signature","street"],icon:"🥞",desc:"A crispy fried pancake filled with brown sugar, nuts, and seeds — the classic BIFF Square snack.",where:"BIFF Square, Nampo-dong",price:"₩2,000"},
+  {name:"Jagalchi Hoe",en:"Fresh raw fish",cats:["seafood","signature"],icon:"🐟",desc:"Pick your catch upstairs, eat it sashimi-style below. The freshest seafood in Korea.",where:"Jagalchi Fish Market",price:"₩30,000+"},
+  {name:"Eomuk",en:"Busan fish cake",cats:["street","signature"],icon:"🍢",desc:"Busan is the home of Korean fish cake — skewered, griddled, or in warm broth. Cheap and cosy.",where:"Samjin Eomuk, Yeongdo",price:"₩3,000"},
+  {name:"Dongnae Pajeon",en:"Seafood pancake",cats:["seafood","signature"],icon:"🥘",desc:"A thick pancake of scallions, squid, and shellfish — a Busan classic, best shared.",where:"Dongnae district",price:"₩18,000"},
+  {name:"Ganjang Gejang",en:"Soy-marinated crab",cats:["seafood"],icon:"🦀",desc:"Raw crab cured in savoury soy until silky and rich — the famous 'rice thief'.",where:"Machang Ganjang Gejang",price:"₩25,000"},
+  {name:"Bibim Dangmyeon",en:"Spicy glass noodles",cats:["street","noodles"],icon:"🌶️",desc:"Chewy sweet-potato noodles in a sweet-spicy sauce — a beloved BIFF Square stall snack.",where:"BIFF Square stalls",price:"₩4,000"},
+  {name:"Wandang & Kalguksu",en:"Dumpling noodles",cats:["noodles","street"],icon:"🥟",desc:"Handmade dumplings and knife-cut noodles in a clear, comforting broth — a market favourite.",where:"Gukje Market alleys",price:"₩7,000"},
+];
+
+/* ---------------- RENDER ---------------- */
+function renderStays(filter="all"){
+  document.getElementById("stayGrid").innerHTML = stays.filter(s=>filter==="all"||s.cats.includes(filter)).map(s=>`
+    <article class="card"><div class="thumb ${s.tint}"><span class="tag">${s.area}</span><span>${s.icon}</span><span class="price">${s.price}/night</span></div>
+    <div class="body"><h3>${s.name}</h3><div class="taglist">${s.tags.map(t=>`<span>${t}</span>`).join("")}</div>
+    <p class="desc">${s.desc}</p><div class="foot"><span class="rating"><b>★ ${s.rating}</b> · ${s.reviews}</span>
+    <a data-page="contact" class="link-more">Book →</a></div></div></article>`).join("");
+}
+function renderFoods(filter="all"){
+  const tints=['tint-a','tint-b','tint-c','tint-d','tint-f','tint-e'];
+  document.getElementById("foodGrid").innerHTML = foods.filter(f=>filter==="all"||f.cats.includes(filter)).map((f,i)=>`
+    <article class="card"><div class="thumb ${tints[i%6]}"><span class="tag">${f.cats[0]}</span><span>${f.icon}</span><span class="price">${f.price}</span></div>
+    <div class="body"><h3>${f.name}</h3><div class="meta">${f.en}</div><p class="desc">${f.desc}</p>
+    <div class="foot"><span class="rating">📍 ${f.where}</span></div></div></article>`).join("");
+}
+
+/* ---------------- FILTERS ---------------- */
+function wireChips(id, cb){
+  document.getElementById(id).addEventListener("click", e=>{
+    const btn = e.target.closest(".chip"); if(!btn) return;
+    e.currentTarget.querySelectorAll(".chip").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active"); cb(btn.dataset.filter);
+  });
+}
+
+/* ---------------- SUB-TABS ---------------- */
+document.getElementById("resTabs").addEventListener("click", e=>{
+  const b = e.target.closest(".subtab"); if(!b) return;
+  document.querySelectorAll("#resTabs .subtab").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  document.querySelectorAll("#svc-reservation .subpanel").forEach(p=>p.classList.remove("active"));
+  document.getElementById(b.dataset.tab).classList.add("active");
+});
+
+/* ---------------- ROUTER ---------------- */
+const PAGES = ["home","services","business","contact"];
+const TITLES = {
+  home:"helloBusan — Your Busan trip, handled",
+  services:"Services — helloBusan",business:"For Business — helloBusan",contact:"Contact — helloBusan"
+};
+function goTo(page){
+  if(!PAGES.includes(page)) page="home";
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById("page-"+page).classList.add("active");
+  document.querySelectorAll('.nav-top[data-page]').forEach(a=>a.classList.toggle("active-link",a.dataset.page===page));
+  document.title = TITLES[page];
+  document.getElementById("navlinks").classList.remove("open");
+  window.scrollTo({top:0,left:0,behavior:"auto"});
+}
+document.addEventListener("click", e=>{
+  const el = e.target.closest("[data-page]"); if(!el) return;
+  e.preventDefault();
+  const page = el.dataset.page; goTo(page);
+  if(location.hash.replace("#","") !== page) history.pushState(null,"","#"+page);
+  const sec = el.dataset.section;
+  if(sec){ const t=document.getElementById(sec); if(t) setTimeout(()=>t.scrollIntoView({behavior:"smooth",block:"start"}),70); }
+});
+window.addEventListener("popstate", ()=>{const h=location.hash.replace("#",""); goTo(PAGES.includes(h)?h:"home");});
+
+/* ---------------- CAR PRICE ---------------- */
+const USD = 0.00074;
+const fmtWon = n=>"₩"+n.toLocaleString("en-US");
+const fmtUsd = n=>"≈ $"+Math.round(n*USD);
+function updateFare(){
+  const base = parseInt(document.getElementById("service").selectedOptions[0].dataset.base,10);
+  const vmult = parseFloat(document.getElementById("vehicle").value);
+  const total = Math.round(base*vmult/1000)*1000;
+  document.getElementById("fare").innerHTML = fmtWon(total)+` <small id="fareUsd">${fmtUsd(total)}</small>`;
+  return total;
+}
+document.getElementById("service").addEventListener("change", updateFare);
+document.getElementById("vehicle").addEventListener("change", updateFare);
+document.getElementById("taxiForm").addEventListener("submit", e=>{
+  e.preventDefault(); const total = updateFare();
+  const svcText = document.getElementById("service").selectedOptions[0].text;
+  const pickup = document.getElementById("pickup").value || "your pickup point";
+  const dest = document.getElementById("dest").value;
+  const date = document.getElementById("date").value || "your date";
+  const time = document.getElementById("time").value;
+  const pax = document.getElementById("pax").value;
+  const msg = document.getElementById("confirmMsg");
+  msg.innerHTML = `✅ <b>Got it!</b> Your ${svcText.toLowerCase()} from <b>${pickup}</b> to <b>${dest}</b> on <b>${date}</b> at <b>${time}</b> for <b>${pax} guest(s)</b> is about <b>${fmtWon(total)}</b>. We'll confirm by email soon. <br><span style="color:var(--muted)">Demo only — no booking was made.</span>`;
+  msg.classList.add("show"); msg.scrollIntoView({behavior:"smooth",block:"center"});
+});
+
+/* ---------------- ENQUIRY FORMS ---------------- */
+function wireEnquiry(formId, confirmId, nameId, selId){
+  document.getElementById(formId).addEventListener('submit', e=>{
+    e.preventDefault();
+    const name = document.getElementById(nameId).value.trim() || 'there';
+    const topic = document.getElementById(selId).value;
+    const msg = document.getElementById(confirmId);
+    msg.innerHTML = `✅ <b>Thanks, ${name}!</b> We got your request about <b>${topic.toLowerCase()}</b> and will reply within 24 hours. <br><span style="color:var(--muted)">Demo only — no message was sent.</span>`;
+    msg.classList.add('show'); msg.scrollIntoView({behavior:'smooth',block:'center'}); e.target.reset();
+  });
+}
+wireEnquiry('conciergeForm','cConfirm','cName','cInterest');
+wireEnquiry('bizForm','bConfirm','bName','bNeed');
+wireEnquiry('msgForm','ctConfirm','ctName','ctTopic');
+
+/* ---------------- INIT ---------------- */
+renderStays(); renderFoods();
+wireChips("stayChips", renderStays); wireChips("foodChips", renderFoods);
+updateFare();
+document.getElementById("date").value = new Date().toISOString().split("T")[0];
+goTo(PAGES.includes(location.hash.replace("#","")) ? location.hash.replace("#","") : "home");
+</script>
+</body>
+</html>
