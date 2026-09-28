@@ -278,6 +278,7 @@
       <span class="eyebrow">Resume</span>
       <h2>My Background</h2>
       <p>Born in South Korea, I've lived across the USA, China, Germany, and the Netherlands, bringing a global, cross-cultural perspective to every team.</p>
+      <a class="btn btn-accent" href="resume.pdf" download style="margin-top:18px">⬇ Download my Resume</a>
     </div>
     <div class="tabs">
       <button class="tab active" data-tab="experience">Experience</button>
@@ -435,12 +436,35 @@
   });
 
   // contact form
-  document.getElementById('msgForm').addEventListener('submit',e=>{
+  document.getElementById('msgForm').addEventListener('submit',async e=>{
     e.preventDefault();
+    const form=e.target;
+    const btn=form.querySelector('button[type="submit"]');
     const name=document.getElementById('ctName').value.trim()||'there';
+    const email=document.getElementById('ctEmail').value.trim();
+    const message=document.getElementById('ctMsg').value.trim();
     const msg=document.getElementById('ctConfirm');
-    msg.innerHTML=`✅ <b>Thanks, ${name}!</b> Your message has been sent. I'll reply by email soon. <br><span style="color:var(--muted)">Demo only. No message was actually sent.</span>`;
-    msg.classList.add('show'); e.target.reset();
+    const originalLabel=btn.textContent;
+    btn.disabled=true; btn.textContent='Sending…';
+    try{
+      const res=await fetch('/api/contact',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name,email,message})
+      });
+      const data=await res.json().catch(()=>({}));
+      if(res.ok && data.ok){
+        msg.innerHTML=`✅ <b>Thanks, ${name}!</b> Your message has been sent. I'll reply by email soon.`;
+        form.reset();
+      }else{
+        msg.innerHTML=`⚠️ Something went wrong sending your message. Please email me directly at <a href="mailto:jenny@thesonlab.com">jenny@thesonlab.com</a>.`;
+      }
+    }catch{
+      msg.innerHTML=`⚠️ Something went wrong sending your message. Please email me directly at <a href="mailto:jenny@thesonlab.com">jenny@thesonlab.com</a>.`;
+    }finally{
+      btn.disabled=false; btn.textContent=originalLabel;
+      msg.classList.add('show');
+    }
   });
 </script>
 </body>
