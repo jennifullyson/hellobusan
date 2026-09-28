@@ -2,10 +2,15 @@ name = "hellobusan"
 main = "src/worker.js"
 compatibility_date = "2026-09-24"
 compatibility_flags = ["nodejs_compat"]
+workers_dev = true
 
 [assets]
 directory = "."
 binding = "ASSETS"
+
+[[routes]]
+pattern = "thesonlab.com"
+custom_domain = true
 
 [[send_email]]
 name = "SEND_EMAIL"

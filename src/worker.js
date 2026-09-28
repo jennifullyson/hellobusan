@@ -1,5 +1,5 @@
 import { EmailMessage } from "cloudflare:email";
-import { createMimeMessage } from "mimetext";
+import { createMimeMessage, Mailbox } from "mimetext";
 
 const FROM_ADDRESS = "contact@thesonlab.com";
 const TO_ADDRESS = "jenny@thesonlab.com";
@@ -40,7 +40,7 @@ async function handleContact(request, env) {
     contentType: "text/plain",
     data: `From: ${name} <${email}>\n\n${message}`,
   });
-  msg.setHeader("Reply-To", email);
+  msg.setHeader("Reply-To", new Mailbox(email, { type: "Reply-To" }));
 
   const emailMessage = new EmailMessage(FROM_ADDRESS, TO_ADDRESS, msg.asRaw());
 
@@ -48,6 +48,7 @@ async function handleContact(request, env) {
     await env.SEND_EMAIL.send(emailMessage);
     return Response.json({ ok: true });
   } catch (err) {
+    console.error("SEND_EMAIL failed:", err && err.message, err);
     return Response.json({ ok: false, error: "Failed to send email" }, { status: 502 });
   }
 }
