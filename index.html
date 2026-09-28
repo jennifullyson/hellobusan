@@ -123,7 +123,7 @@
   @media(max-width:640px){.sk-cols{grid-template-columns:1fr;gap:30px}}
 
   /* contact */
-  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start}
+  .cinfo{max-width:480px}
   .cinfo h3{font-size:1.5rem;margin-bottom:10px}
   .cinfo p{color:var(--body);margin-bottom:22px;max-width:360px}
   .cline{display:flex;gap:14px;align-items:center;margin-bottom:16px}
@@ -131,16 +131,6 @@
   .cline b{display:block;color:var(--ink);font-family:var(--disp);font-size:.95rem}
   .cline span{font-size:.9rem;color:var(--body)}
   .cline a{color:var(--accent);font-weight:600}
-  .cform{background:#fff;border:1px solid var(--line);border-radius:16px;padding:34px 32px;box-shadow:var(--shadow-sm)}
-  .field{margin-bottom:16px}
-  .field label{display:block;font-family:var(--disp);font-weight:600;font-size:13px;color:var(--ink);margin-bottom:7px}
-  .field input,.field textarea{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;font-size:15px;color:var(--ink);background:#fff;transition:.2s}
-  .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(31,61,107,.16)}
-  .field textarea{resize:vertical;min-height:110px}
-  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .confirm-msg{display:none;background:#eafaf1;border:1px solid #b7e6cd;color:#12764e;border-radius:10px;padding:14px 16px;margin-top:14px;font-size:.93rem}
-  .confirm-msg.show{display:block;animation:fade .3s ease}
-  .confirm-msg b{font-weight:700}
 
   /* footer */
   footer{background:var(--ink);color:#b9c0cf;padding:44px 0 30px}
@@ -152,7 +142,7 @@
   .foot-copy{border-top:1px solid rgba(255,255,255,.12);margin-top:26px;padding-top:20px;font-size:.85rem;color:#8791a3;text-align:center}
 
   @media(max-width:900px){
-    .hero-grid,.pf,.contact-grid{grid-template-columns:1fr;gap:36px}
+    .hero-grid,.pf{grid-template-columns:1fr;gap:36px}
     .hero-photo{order:-1}
     .pf-body{padding:0 30px 30px}
     .pf-media{min-height:260px}
@@ -371,25 +361,13 @@
       <h2>Get In Touch</h2>
       <p>Have an idea, an opportunity, or just want to say hello?</p>
     </div>
-    <div class="contact-grid">
-      <div class="cinfo">
-        <h3>Let's build something together.</h3>
-        <p>I usually reply within a few hours. The fastest way to reach me is email.</p>
-        <div class="cline"><div class="ci">✉️</div><div><b>Email</b><span><a href="mailto:jenny@thesonlab.com">jenny@thesonlab.com</a></span></div></div>
-        <div class="cline"><div class="ci">📍</div><div><b>Location</b><span>Amsterdam, Netherlands</span></div></div>
-        <div class="cline"><div class="ci">in</div><div><b>LinkedIn</b><span><a href="https://www.linkedin.com/in/jennyson/" target="_blank" rel="noopener">/in/jennyson</a></span></div></div>
-      </div>
-      <div class="cform">
-        <form id="msgForm">
-          <div class="row2">
-            <div class="field"><label for="ctName">Name</label><input id="ctName" type="text" placeholder="Your name" required></div>
-            <div class="field"><label for="ctEmail">Email</label><input id="ctEmail" type="email" placeholder="you@example.com" required></div>
-          </div>
-          <div class="field"><label for="ctMsg">Message</label><textarea id="ctMsg" placeholder="How can I help?" required></textarea></div>
-          <button type="submit" class="btn btn-accent" style="width:100%;justify-content:center">Send message</button>
-          <div class="confirm-msg" id="ctConfirm"></div>
-        </form>
-      </div>
+    <div class="cinfo">
+      <h3>Let's build something together.</h3>
+      <p>I usually reply within a few hours. The fastest way to reach me is email.</p>
+      <div class="cline"><div class="ci">✉️</div><div><b>Email</b><span><a href="mailto:jenny@thesonlab.com">jenny@thesonlab.com</a></span></div></div>
+      <div class="cline"><div class="ci">📍</div><div><b>Location</b><span>Amsterdam, Netherlands</span></div></div>
+      <div class="cline"><div class="ci">in</div><div><b>LinkedIn</b><span><a href="https://www.linkedin.com/in/jennyson/" target="_blank" rel="noopener">/in/jennyson</a></span></div></div>
+      <a class="btn btn-accent" href="mailto:jenny@thesonlab.com" style="margin-top:22px">✉️ Contact Me</a>
     </div>
   </div>
 </section>
@@ -433,38 +411,6 @@
     let cur='home';
     for(const id of secs){const el=document.getElementById(id); if(el&&el.getBoundingClientRect().top<=110) cur=id;}
     nav.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
-  });
-
-  // contact form
-  document.getElementById('msgForm').addEventListener('submit',async e=>{
-    e.preventDefault();
-    const form=e.target;
-    const btn=form.querySelector('button[type="submit"]');
-    const name=document.getElementById('ctName').value.trim()||'there';
-    const email=document.getElementById('ctEmail').value.trim();
-    const message=document.getElementById('ctMsg').value.trim();
-    const msg=document.getElementById('ctConfirm');
-    const originalLabel=btn.textContent;
-    btn.disabled=true; btn.textContent='Sending…';
-    try{
-      const res=await fetch('/api/contact',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({name,email,message})
-      });
-      const data=await res.json().catch(()=>({}));
-      if(res.ok && data.ok){
-        msg.innerHTML=`✅ <b>Thanks, ${name}!</b> Your message has been sent. I'll reply by email soon.`;
-        form.reset();
-      }else{
-        msg.innerHTML=`⚠️ Something went wrong sending your message. Please email me directly at <a href="mailto:jenny@thesonlab.com">jenny@thesonlab.com</a>.`;
-      }
-    }catch{
-      msg.innerHTML=`⚠️ Something went wrong sending your message. Please email me directly at <a href="mailto:jenny@thesonlab.com">jenny@thesonlab.com</a>.`;
-    }finally{
-      btn.disabled=false; btn.textContent=originalLabel;
-      msg.classList.add('show');
-    }
   });
 </script>
 </body>

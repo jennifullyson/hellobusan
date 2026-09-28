@@ -7,11 +7,12 @@ workers_dev = true
 [assets]
 directory = "."
 binding = "ASSETS"
+run_worker_first = true
 
 [[routes]]
 pattern = "thesonlab.com"
 custom_domain = true
 
-[[send_email]]
-name = "SEND_EMAIL"
-destination_address = "jenny@thesonlab.com"
+[[routes]]
+pattern = "hellobusan.thesonlab.com"
+custom_domain = true
