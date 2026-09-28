@@ -123,14 +123,12 @@
   @media(max-width:640px){.sk-cols{grid-template-columns:1fr;gap:30px}}
 
   /* contact */
-  .cinfo{max-width:480px}
+  .cinfo{max-width:560px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center}
   .cinfo h3{font-size:1.5rem;margin-bottom:10px}
   .cinfo p{color:var(--body);margin-bottom:22px;max-width:360px}
-  .cline{display:flex;gap:14px;align-items:center;margin-bottom:16px}
-  .cline .ci{width:44px;height:44px;border-radius:11px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:19px;flex:none}
-  .cline b{display:block;color:var(--ink);font-family:var(--disp);font-size:.95rem}
-  .cline span{font-size:.9rem;color:var(--body)}
-  .cline a{color:var(--accent);font-weight:600}
+  .cline-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;font-size:.95rem;color:var(--body)}
+  .cline-row a{color:var(--accent);font-weight:600}
+  .cline-row .dot-sep{color:var(--muted)}
 
   /* footer */
   footer{background:var(--ink);color:#b9c0cf;padding:44px 0 30px}
@@ -364,9 +362,13 @@
     <div class="cinfo">
       <h3>Let's build something together.</h3>
       <p>I usually reply within a few hours. The fastest way to reach me is email.</p>
-      <div class="cline"><div class="ci">✉️</div><div><b>Email</b><span><a href="mailto:jenny@thesonlab.com">jenny@thesonlab.com</a></span></div></div>
-      <div class="cline"><div class="ci">📍</div><div><b>Location</b><span>Amsterdam, Netherlands</span></div></div>
-      <div class="cline"><div class="ci">in</div><div><b>LinkedIn</b><span><a href="https://www.linkedin.com/in/jennyson/" target="_blank" rel="noopener">/in/jennyson</a></span></div></div>
+      <div class="cline-row">
+        <span><a href="mailto:jenny@thesonlab.com">jenny@thesonlab.com</a></span>
+        <span class="dot-sep">·</span>
+        <span>Amsterdam, Netherlands</span>
+        <span class="dot-sep">·</span>
+        <span><a href="https://www.linkedin.com/in/jennyson/" target="_blank" rel="noopener">/in/jennyson</a></span>
+      </div>
       <a class="btn btn-accent" href="mailto:jenny@thesonlab.com" style="margin-top:22px">✉️ Contact Me</a>
     </div>
   </div>
