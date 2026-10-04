@@ -14,15 +14,15 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="helloBusan — Your Busan trip, handled">
 <meta name="twitter:description" content="Private tour guide, reservations, shopping, translation, medical tour, and VIP concierge for visitors to Busan, South Korea.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Crect width='44' height='44' rx='11' fill='%23e8a13c'/%3E%3Cpath d='M10 27 q6 -7 12 0 t12 0' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='29' cy='15' r='3.2' fill='white'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Crect width='44' height='44' rx='11' fill='%23023E8A'/%3E%3Cpath d='M10 27 q6 -7 12 0 t12 0' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='29' cy='15' r='3.2' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#ffffff;--soft:#f5f6f8;--warm:#fdf7ee;--ink:#181a1f;--body:#565d6b;--muted:#8a92a0;
-    --line:#e7e9ee;--gold:#e8a13c;--gold-d:#cf8a26;--green:#14b88a;--green-d:#0e9e76;
-    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --bg:#ffffff;--soft:#f5f6f8;--warm:#eaf2fb;--ink:#181a1f;--body:#565d6b;--muted:#8a92a0;
+    --line:#e7e9ee;--gold:#023E8A;--gold-d:#01295c;--green:#14b88a;--green-d:#0e9e76;
+    --sans:'Roboto','Google Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
     --radius:16px;--shadow:0 8px 30px rgba(24,26,31,.08);--shadow-sm:0 3px 12px rgba(24,26,31,.06);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -75,7 +75,7 @@
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
   /* hero */
-  .hero{background:radial-gradient(90% 120% at 85% 0%,#fdf1dd,transparent 60%),linear-gradient(180deg,#fff,var(--warm))}
+  .hero{background:radial-gradient(90% 120% at 85% 0%,#e3edfa,transparent 60%),linear-gradient(180deg,#fff,var(--warm))}
   .hero-inner{padding:82px 0 74px;max-width:760px}
   .pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-weight:600;font-size:13px;color:var(--gold-d);box-shadow:var(--shadow-sm)}
   .hero h1{font-size:clamp(2.4rem,6vw,4rem);margin:22px 0 20px}
@@ -145,7 +145,7 @@
   .svc-card h3{font-size:1.18rem}
   .svc-card p{color:var(--body);font-size:.95rem}
   .badges{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
-  .badges span{background:var(--warm);border:1px solid #f2e4cd;border-radius:999px;padding:9px 18px;font-weight:600;font-size:13.5px;color:var(--gold-d)}
+  .badges span{background:var(--warm);border:1px solid #d7e4f5;border-radius:999px;padding:9px 18px;font-weight:600;font-size:13.5px;color:var(--gold-d)}
   .svc-note{margin-top:22px;color:var(--body);font-size:.98rem;display:flex;gap:9px;align-items:flex-start}
 
   /* reservation sub-tabs */
@@ -172,10 +172,10 @@
 
   /* booking */
   .booking{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-  .booking-info{background:var(--warm);border:1px solid #f2e4cd;border-radius:var(--radius);padding:34px 32px}
+  .booking-info{background:var(--warm);border:1px solid #d7e4f5;border-radius:var(--radius);padding:34px 32px}
   .booking-info h3{font-size:1.4rem;margin-bottom:10px}
   .booking-info>p{color:var(--body);margin-bottom:22px}
-  .perk{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-top:1px solid #f0e3cd}
+  .perk{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-top:1px solid #d7e4f5}
   .perk .pi{font-size:20px;flex:none}
   .perk b{display:block;color:var(--ink);font-size:1rem}
   .perk span{font-size:.88rem;color:var(--body)}
@@ -188,9 +188,9 @@
   .estimate .amt small{font-size:.78rem;font-weight:600;color:var(--muted)}
 
   /* concierge / business panels (light) */
-  .panel{background:var(--warm);border:1px solid #f2e4cd;border-radius:20px;padding:40px 40px}
+  .panel{background:var(--warm);border:1px solid #d7e4f5;border-radius:20px;padding:40px 40px}
   .cc-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 32px;margin:8px 0 4px}
-  .cc-list li{font-size:.97rem;color:var(--ink);padding:11px 0 11px 30px;position:relative;border-bottom:1px solid #f0e3cd}
+  .cc-list li{font-size:.97rem;color:var(--ink);padding:11px 0 11px 30px;position:relative;border-bottom:1px solid #d7e4f5}
   .cc-list li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
   .inquiry{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 32px;scroll-margin-top:80px}
   .inquiry h3{font-size:1.35rem;margin-bottom:4px}
@@ -206,9 +206,6 @@
   .ci-card h4{font-size:1rem;color:var(--ink);margin-bottom:2px}
   .ci-card p{font-size:.93rem;color:var(--body)}
   .ci-card a{color:var(--gold-d);font-weight:600}
-  .socials{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-  .socials a{background:var(--soft);border-radius:999px;padding:9px 18px;font-weight:600;font-size:13.5px;color:var(--body);transition:.2s;cursor:pointer}
-  .socials a:hover{background:var(--warm);color:var(--gold-d)}
   .contact-form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 32px}
   .contact-form h3{font-size:1.3rem;margin-bottom:4px}
   .contact-form .sub{color:var(--body);font-size:.92rem;margin-bottom:22px}
@@ -231,18 +228,40 @@
     .contact-grid{grid-template-columns:1fr;gap:32px}
     .foot-grid{grid-template-columns:1fr 1fr}
   }
+
+  /* language switcher */
+  .lang-switch{position:relative}
+  .lang-btn{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14px;color:var(--ink);
+    background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 13px;cursor:pointer;font-family:inherit}
+  .lang-btn:hover{border-color:var(--gold)}
+  .lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:160px;background:#fff;border:1px solid var(--line);
+    border-radius:12px;box-shadow:var(--shadow);padding:6px;opacity:0;visibility:hidden;transition:.2s;z-index:80}
+  .lang-switch:hover .lang-menu, .lang-switch.open .lang-menu{opacity:1;visibility:visible}
+  .lang-menu button{display:flex;width:100%;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;border:none;
+    background:none;font-family:inherit;font-weight:500;font-size:14px;color:var(--ink);cursor:pointer;text-align:left}
+  .lang-menu button:hover{background:var(--soft)}
+  .lang-menu button.active{color:var(--gold-d);font-weight:700}
   @media(max-width:600px){
     .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:4px;padding:16px;border-bottom:1px solid var(--line);max-height:82vh;overflow:auto}
     .nav-links.open{display:flex}
     .menu-toggle{display:block}
     .nav-cta{text-align:center}
     .drop-menu{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;border:none;min-width:0;padding:4px 0 4px 12px}
+    .lang-switch{width:100%}
+    .lang-btn{width:100%;justify-content:center}
+    .lang-menu{position:static;opacity:1;visibility:visible;box-shadow:none;border:none;margin-top:4px;display:none}
+    .lang-switch.open .lang-menu{display:block}
     .g3,.feat-grid,.svc-grid,.svc-grid.three,.row2,.inq-grid{grid-template-columns:1fr}
     .subtabs{width:100%}.subtab{flex:1}
-    .hero-inner{padding:56px 0 52px}
-    .foot-grid{grid-template-columns:1fr}
+    .hero-inner{padding:56px 0 52px;text-align:center}
+    .hero-cta,.hero-chips{justify-content:center}
+    .foot-grid{grid-template-columns:1fr;text-align:center}
+    .foot-grid .brand{justify-content:center}
+    .foot-about{margin-left:auto;margin-right:auto}
+    .foot-bottom{justify-content:center;text-align:center}
     section.block{padding:56px 0}
     .panel,.booking-info,.booking-form,.inquiry,.contact-form{padding:26px 22px}
+    .ci-card{flex-direction:column;align-items:center;text-align:center}
   }
 </style>
 </head>
@@ -253,7 +272,7 @@
   <div class="wrap nav-inner">
     <div class="brand" data-page="home">
       <svg class="logo-mark" width="38" height="38" viewBox="0 0 44 44" aria-hidden="true">
-        <rect width="44" height="44" rx="11" fill="#e8a13c"/>
+        <rect width="44" height="44" rx="11" fill="#023E8A"/>
         <path d="M10 27 q6 -7 12 0 t12 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
         <circle cx="29" cy="15" r="3.2" fill="#fff"/>
       </svg>
@@ -261,20 +280,28 @@
     </div>
     <button class="menu-toggle" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
     <nav class="nav-links" id="navlinks">
-      <a class="nav-top" data-page="home">Home</a>
+      <a class="nav-top" data-page="home" data-i18n="nav.home">Home</a>
       <div class="nav-drop">
-        <a class="nav-top" data-page="services">Services <span class="caret">▼</span></a>
+        <a class="nav-top" data-page="services"><span data-i18n="nav.services">Services</span> <span class="caret">▼</span></a>
         <div class="drop-menu">
-          <a data-page="services" data-section="svc-tourguide"><span class="di">🧭</span>Private Tour Guide</a>
-          <a data-page="services" data-section="svc-reservation"><span class="di">📅</span>Reservation</a>
-          <a data-page="services" data-section="svc-shopping"><span class="di">🛍️</span>Shopping</a>
-          <a data-page="services" data-section="svc-translation"><span class="di">💬</span>Translation</a>
-          <a data-page="services" data-section="svc-medical"><span class="di">🏥</span>Medical Tour</a>
-          <a data-page="services" data-section="svc-vip"><span class="di">✨</span>VIP Concierge</a>
+          <a data-page="services" data-section="svc-tourguide"><span class="di">🧭</span><span data-i18n="nav.dd.tourguide">Private Tour Guide</span></a>
+          <a data-page="services" data-section="svc-reservation"><span class="di">📅</span><span data-i18n="nav.dd.reservation">Reservation</span></a>
+          <a data-page="services" data-section="svc-shopping"><span class="di">🛍️</span><span data-i18n="nav.dd.shopping">Shopping</span></a>
+          <a data-page="services" data-section="svc-translation"><span class="di">💬</span><span data-i18n="nav.dd.translation">Translation</span></a>
+          <a data-page="services" data-section="svc-medical"><span class="di">🏥</span><span data-i18n="nav.dd.medical">Medical Tour</span></a>
+          <a data-page="services" data-section="svc-vip"><span class="di">✨</span><span data-i18n="nav.dd.vip">VIP Concierge</span></a>
         </div>
       </div>
-      <a class="nav-top" data-page="business">For Business</a>
-      <a class="nav-cta" data-page="contact">Contact us</a>
+      <a class="nav-top" data-page="business" data-i18n="nav.business">For Business</a>
+      <a class="nav-cta" data-page="contact" data-i18n="nav.contact">Contact us</a>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true">🌐 <span id="langBtnLabel">EN</span></button>
+        <div class="lang-menu" id="langMenu">
+          <button data-lang="en" type="button">🇬🇧 English</button>
+          <button data-lang="de" type="button">🇩🇪 Deutsch</button>
+          <button data-lang="ko" type="button">🇰🇷 한국어</button>
+        </div>
+      </div>
     </nav>
   </div>
 </header>
@@ -285,20 +312,20 @@
 <section class="page active" id="page-home">
   <div class="hero">
     <div class="wrap hero-inner">
-      <span class="pill">🌊 Your local team in Busan</span>
-      <h1>Your Busan trip, <span>handled.</span></h1>
-      <p class="lead">Private guides, easy reservations, shopping, translation, medical visits, and a concierge who takes care of the details — so you can just enjoy Busan.</p>
+      <span class="pill" data-i18n="hero.pill">🌊 Your local team in Busan</span>
+      <h1><span data-i18n="hero.h1a">Your Busan trip,</span> <span data-i18n="hero.h1b">handled.</span></h1>
+      <p class="lead" data-i18n="hero.lead">Private guides, easy reservations, shopping, translation, medical visits, and a concierge who takes care of the details — so you can just enjoy Busan.</p>
       <div class="hero-cta">
-        <a data-page="services" class="btn btn-coral">See what we do</a>
-        <a data-page="contact" class="btn btn-ghost">Talk to us</a>
+        <a data-page="services" class="btn btn-coral" data-i18n="hero.cta1">See what we do</a>
+        <a data-page="contact" class="btn btn-ghost" data-i18n="hero.cta2">Talk to us</a>
       </div>
       <div class="hero-chips">
-        <a data-page="services" data-section="svc-tourguide">🧭 Tour guide</a>
-        <a data-page="services" data-section="svc-reservation">📅 Reservations</a>
-        <a data-page="services" data-section="svc-shopping">🛍️ Shopping</a>
-        <a data-page="services" data-section="svc-translation">💬 Translation</a>
-        <a data-page="services" data-section="svc-medical">🏥 Medical</a>
-        <a data-page="services" data-section="svc-vip">✨ VIP concierge</a>
+        <a data-page="services" data-section="svc-tourguide" data-i18n="hero.chip.tourguide">🧭 Tour guide</a>
+        <a data-page="services" data-section="svc-reservation" data-i18n="hero.chip.reservation">📅 Reservations</a>
+        <a data-page="services" data-section="svc-shopping" data-i18n="hero.chip.shopping">🛍️ Shopping</a>
+        <a data-page="services" data-section="svc-translation" data-i18n="hero.chip.translation">💬 Translation</a>
+        <a data-page="services" data-section="svc-medical" data-i18n="hero.chip.medical">🏥 Medical</a>
+        <a data-page="services" data-section="svc-vip" data-i18n="hero.chip.vip">✨ VIP concierge</a>
       </div>
     </div>
   </div>
@@ -306,17 +333,17 @@
   <section class="block">
     <div class="wrap">
       <div class="section-head center">
-        <span class="kicker">What we do</span>
-        <h2>Six ways we make Busan easy</h2>
-        <p>One local team, everything sorted. Pick what you need — or let us handle it all.</p>
+        <span class="kicker" data-i18n="home.kicker">What we do</span>
+        <h2 data-i18n="home.h2">Six ways we make Busan easy</h2>
+        <p data-i18n="home.p">One local team, everything sorted. Pick what you need — or let us handle it all.</p>
       </div>
       <div class="feat-grid">
-        <div class="feat" data-page="services" data-section="svc-tourguide"><div class="ficon">🧭</div><h3>Private Tour Guide</h3><p>Experienced guides in English, German & Korean — every day built around what you want to see.</p><span class="link-more">Learn more →</span></div>
-        <div class="feat" data-page="services" data-section="svc-reservation"><div class="ficon">📅</div><h3>Reservation</h3><p>Hotels, restaurants, and a private car — booked for you, no Korean or foreign-card headaches.</p><span class="link-more">Learn more →</span></div>
-        <div class="feat" data-page="services" data-section="svc-shopping"><div class="ficon">🛍️</div><h3>Shopping</h3><p>Personal shopping from big department stores to K-beauty and local markets, tax refund included.</p><span class="link-more">Learn more →</span></div>
-        <div class="feat" data-page="services" data-section="svc-translation"><div class="ficon">💬</div><h3>Translation</h3><p>Interpreters and document translation in English, Korean, Chinese, and Japanese.</p><span class="link-more">Learn more →</span></div>
-        <div class="feat" data-page="services" data-section="svc-medical"><div class="ficon">🏥</div><h3>Medical Tour</h3><p>Check-ups, skincare, dental, and wellness — appointments and an interpreter all arranged.</p><span class="link-more">Learn more →</span></div>
-        <div class="feat" data-page="services" data-section="svc-vip"><div class="ficon">✨</div><h3>VIP Concierge</h3><p>One person to call for anything — we handle the rest, day or night.</p><span class="link-more">Learn more →</span></div>
+        <div class="feat" data-page="services" data-section="svc-tourguide"><div class="ficon">🧭</div><h3 data-i18n="feat.tourguide.h3">Private Tour Guide</h3><p data-i18n="feat.tourguide.p">Experienced guides in English, German & Korean — every day built around what you want to see.</p><span class="link-more" data-i18n="common.learnMore">Learn more →</span></div>
+        <div class="feat" data-page="services" data-section="svc-reservation"><div class="ficon">📅</div><h3 data-i18n="feat.reservation.h3">Reservation</h3><p data-i18n="feat.reservation.p">Hotels, restaurants, and a private car — booked for you, no Korean or foreign-card headaches.</p><span class="link-more" data-i18n="common.learnMore">Learn more →</span></div>
+        <div class="feat" data-page="services" data-section="svc-shopping"><div class="ficon">🛍️</div><h3 data-i18n="feat.shopping.h3">Shopping</h3><p data-i18n="feat.shopping.p">Personal shopping from big department stores to K-beauty and local markets, tax refund included.</p><span class="link-more" data-i18n="common.learnMore">Learn more →</span></div>
+        <div class="feat" data-page="services" data-section="svc-translation"><div class="ficon">💬</div><h3 data-i18n="feat.translation.h3">Translation</h3><p data-i18n="feat.translation.p">Interpreters and document translation in English, Korean, Chinese, and Japanese.</p><span class="link-more" data-i18n="common.learnMore">Learn more →</span></div>
+        <div class="feat" data-page="services" data-section="svc-medical"><div class="ficon">🏥</div><h3 data-i18n="feat.medical.h3">Medical Tour</h3><p data-i18n="feat.medical.p">Check-ups, skincare, dental, and wellness — appointments and an interpreter all arranged.</p><span class="link-more" data-i18n="common.learnMore">Learn more →</span></div>
+        <div class="feat" data-page="services" data-section="svc-vip"><div class="ficon">✨</div><h3 data-i18n="feat.vip.h3">VIP Concierge</h3><p data-i18n="feat.vip.p">One person to call for anything — we handle the rest, day or night.</p><span class="link-more" data-i18n="common.learnMore">Learn more →</span></div>
       </div>
     </div>
   </section>
@@ -324,50 +351,50 @@
 
 <!-- ============ SERVICES ============ -->
 <section class="page" id="page-services">
-  <div class="page-hero"><div class="wrap"><div class="crumb">Our services</div><h1>Everything you need in Busan</h1><p>From your arrival to your last day — guiding, booking, shopping, translating, and looking after your health.</p></div></div>
+  <div class="page-hero"><div class="wrap"><div class="crumb" data-i18n="svc.crumb">Our services</div><h1 data-i18n="svc.h1">Everything you need in Busan</h1><p data-i18n="svc.p">From your arrival to your last day — guiding, booking, shopping, translating, and looking after your health.</p></div></div>
 
   <!-- I Tour Guide -->
   <section class="block svc-section" id="svc-tourguide">
     <div class="wrap">
-      <div class="section-head"><span class="kicker">🧭 Private Tour Guide</span><h2>Experienced guides, in your language</h2><p>Explore Busan with a private guide who speaks your language — English, German, or Korean — and builds the day around what you want to see and do.</p></div>
+      <div class="section-head"><span class="kicker" data-i18n="tg.kicker">🧭 Private Tour Guide</span><h2 data-i18n="tg.h2">Experienced guides, in your language</h2><p data-i18n="tg.p">Explore Busan with a private guide who speaks your language — English, German, or Korean — and builds the day around what you want to see and do.</p></div>
       <div class="svc-grid three">
-        <div class="svc-card"><div class="sc-ic">🗺️</div><h3>Experienced local guides</h3><p>Guides who know Busan inside out — the history, the hidden corners, and the spots worth slowing down for.</p></div>
-        <div class="svc-card"><div class="sc-ic">🗣️</div><h3>English · German · Korean</h3><p>Pick a guide in your own language, so nothing gets lost and every story makes sense.</p></div>
-        <div class="svc-card"><div class="sc-ic">✏️</div><h3>Curated to your wishes</h3><p>No fixed itinerary. We shape each day around your interests, your pace, and exactly what you'd like to do.</p></div>
+        <div class="svc-card"><div class="sc-ic">🗺️</div><h3 data-i18n="tg.card1.h3">Experienced local guides</h3><p data-i18n="tg.card1.p">Guides who know Busan inside out — the history, the hidden corners, and the spots worth slowing down for.</p></div>
+        <div class="svc-card"><div class="sc-ic">🗣️</div><h3 data-i18n="tg.card2.h3">English · German · Korean</h3><p data-i18n="tg.card2.p">Pick a guide in your own language, so nothing gets lost and every story makes sense.</p></div>
+        <div class="svc-card"><div class="sc-ic">✏️</div><h3 data-i18n="tg.card3.h3">Curated to your wishes</h3><p data-i18n="tg.card3.p">No fixed itinerary. We shape each day around your interests, your pace, and exactly what you'd like to do.</p></div>
       </div>
-      <div class="badges"><span>🗣️ English · German · Korean</span><span>✨ Curated to your needs & wishes</span></div>
-      <div style="margin-top:26px"><a data-page="contact" class="btn btn-coral">Book a guide</a></div>
+      <div class="badges"><span data-i18n="tg.badge1">🗣️ English · German · Korean</span><span data-i18n="tg.badge2">✨ Curated to your needs & wishes</span></div>
+      <div style="margin-top:26px"><a data-page="contact" class="btn btn-coral" data-i18n="tg.cta">Book a guide</a></div>
     </div>
   </section>
 
   <!-- II Reservation -->
   <section class="block svc-section alt" id="svc-reservation">
     <div class="wrap">
-      <div class="section-head"><span class="kicker">📅 Reservation</span><h2>Booked for you — stay, table, and car</h2><p>Korean-only site? Foreign card rejected? We book it for you, so you don't have to figure it out.</p></div>
+      <div class="section-head"><span class="kicker" data-i18n="res.kicker">📅 Reservation</span><h2 data-i18n="res.h2">Booked for you — stay, table, and car</h2><p data-i18n="res.p">Korean-only site? Foreign card rejected? We book it for you, so you don't have to figure it out.</p></div>
       <div class="subtabs" id="resTabs">
-        <button class="subtab active" data-tab="res-stays">Stays</button>
-        <button class="subtab" data-tab="res-dining">Dining</button>
-        <button class="subtab" data-tab="res-car">Private Car</button>
+        <button class="subtab active" data-tab="res-stays" data-i18n="res.tab.stays">Stays</button>
+        <button class="subtab" data-tab="res-dining" data-i18n="res.tab.dining">Dining</button>
+        <button class="subtab" data-tab="res-car" data-i18n="res.tab.car">Private Car</button>
       </div>
 
       <div class="subpanel active" id="res-stays">
         <div class="chips" id="stayChips">
-          <button class="chip active" data-filter="all">All areas</button>
-          <button class="chip" data-filter="beach">Beach</button>
-          <button class="chip" data-filter="city">City centre</button>
-          <button class="chip" data-filter="views">Bridge views</button>
-          <button class="chip" data-filter="local">Old town</button>
+          <button class="chip active" data-filter="all" data-i18n="res.chip.allareas">All areas</button>
+          <button class="chip" data-filter="beach" data-i18n="res.chip.beach">Beach</button>
+          <button class="chip" data-filter="city" data-i18n="res.chip.city">City centre</button>
+          <button class="chip" data-filter="views" data-i18n="res.chip.views">Bridge views</button>
+          <button class="chip" data-filter="local" data-i18n="res.chip.local">Old town</button>
         </div>
         <div class="grid g3" id="stayGrid"></div>
       </div>
 
       <div class="subpanel" id="res-dining">
         <div class="chips" id="foodChips">
-          <button class="chip active" data-filter="all">Everything</button>
-          <button class="chip" data-filter="signature">Signature</button>
-          <button class="chip" data-filter="seafood">Seafood</button>
-          <button class="chip" data-filter="street">Street food</button>
-          <button class="chip" data-filter="noodles">Noodles</button>
+          <button class="chip active" data-filter="all" data-i18n="res.chip.everything">Everything</button>
+          <button class="chip" data-filter="signature" data-i18n="res.chip.signature">Signature</button>
+          <button class="chip" data-filter="seafood" data-i18n="res.chip.seafood">Seafood</button>
+          <button class="chip" data-filter="street" data-i18n="res.chip.street">Street food</button>
+          <button class="chip" data-filter="noodles" data-i18n="res.chip.noodles">Noodles</button>
         </div>
         <div class="grid g3" id="foodGrid"></div>
       </div>
@@ -375,42 +402,42 @@
       <div class="subpanel" id="res-car">
         <div class="booking">
           <div class="booking-info">
-            <h3>Private car & driver</h3>
-            <p>An English-speaking local driver, a fixed price, and a car ready when you are.</p>
-            <div class="perk"><span class="pi">🧑‍✈️</span><div><b>English-speaking drivers</b><span>Friendly locals who know the city</span></div></div>
-            <div class="perk"><span class="pi">💳</span><div><b>Fixed, upfront price</b><span>No meters, no surprises</span></div></div>
-            <div class="perk"><span class="pi">🛬</span><div><b>Airport pickup & day trips</b><span>From Gimhae transfers to full-day tours</span></div></div>
-            <div class="perk"><span class="pi">🕐</span><div><b>Available 24/7</b><span>Free cancellation up to 24 hours before</span></div></div>
+            <h3 data-i18n="res.carinfo.h3">Private car & driver</h3>
+            <p data-i18n="res.carinfo.p">An English-speaking local driver, a fixed price, and a car ready when you are.</p>
+            <div class="perk"><span class="pi">🧑‍✈️</span><div><b data-i18n="res.perk1.b">English-speaking drivers</b><span data-i18n="res.perk1.span">Friendly locals who know the city</span></div></div>
+            <div class="perk"><span class="pi">💳</span><div><b data-i18n="res.perk2.b">Fixed, upfront price</b><span data-i18n="res.perk2.span">No meters, no surprises</span></div></div>
+            <div class="perk"><span class="pi">🛬</span><div><b data-i18n="res.perk3.b">Airport pickup & day trips</b><span data-i18n="res.perk3.span">From Gimhae transfers to full-day tours</span></div></div>
+            <div class="perk"><span class="pi">🕐</span><div><b data-i18n="res.perk4.b">Available 24/7</b><span data-i18n="res.perk4.span">Free cancellation up to 24 hours before</span></div></div>
           </div>
           <div class="booking-form">
-            <h3>Get an instant price</h3>
-            <p class="sub">Tell us your trip and we'll price it right away.</p>
+            <h3 data-i18n="res.form.h3">Get an instant price</h3>
+            <p class="sub" data-i18n="res.form.sub">Tell us your trip and we'll price it right away.</p>
             <form id="taxiForm">
-              <div class="field"><label for="service">Service</label>
+              <div class="field"><label for="service" data-i18n="res.label.service">Service</label>
                 <select id="service">
-                  <option value="airport" data-base="65000">Airport pickup (Gimhae ⇄ city)</option>
-                  <option value="halfday" data-base="140000">Half-day tour (4 hours)</option>
-                  <option value="fullday" data-base="240000">Full-day tour (8 hours)</option>
-                  <option value="pointtopoint" data-base="22000">Single ride</option>
+                  <option value="airport" data-base="65000" data-i18n="res.opt.airport">Airport pickup (Gimhae ⇄ city)</option>
+                  <option value="halfday" data-base="140000" data-i18n="res.opt.halfday">Half-day tour (4 hours)</option>
+                  <option value="fullday" data-base="240000" data-i18n="res.opt.fullday">Full-day tour (8 hours)</option>
+                  <option value="pointtopoint" data-base="22000" data-i18n="res.opt.pointtopoint">Single ride</option>
                 </select></div>
-              <div class="field"><label for="pickup">Pickup</label><input id="pickup" type="text" placeholder="e.g. Gimhae International Airport" value="Gimhae International Airport"></div>
-              <div class="field" id="destField"><label for="dest">Destination</label>
+              <div class="field"><label for="pickup" data-i18n="res.label.pickup">Pickup</label><input id="pickup" type="text" placeholder="e.g. Gimhae International Airport" value="Gimhae International Airport" data-i18n-placeholder="res.ph.pickup"></div>
+              <div class="field" id="destField"><label for="dest" data-i18n="res.label.dest">Destination</label>
                 <select id="dest">
-                  <option>Haeundae Beach</option><option>Seomyeon (city centre)</option><option>Gwangalli Beach</option><option>Nampo-dong / Jagalchi</option>
-                  <option>Coast & beaches day</option><option>Culture & old town day</option><option>Temples & nature day</option>
+                  <option data-i18n="res.opt.dest1">Haeundae Beach</option><option data-i18n="res.opt.dest2">Seomyeon (city centre)</option><option data-i18n="res.opt.dest3">Gwangalli Beach</option><option data-i18n="res.opt.dest4">Nampo-dong / Jagalchi</option>
+                  <option data-i18n="res.opt.dest5">Coast & beaches day</option><option data-i18n="res.opt.dest6">Culture & old town day</option><option data-i18n="res.opt.dest7">Temples & nature day</option>
                 </select></div>
               <div class="row2">
-                <div class="field"><label for="date">Date</label><input id="date" type="date"></div>
-                <div class="field"><label for="time">Time</label><input id="time" type="time" value="10:00"></div>
+                <div class="field"><label for="date" data-i18n="res.label.date">Date</label><input id="date" type="date"></div>
+                <div class="field"><label for="time" data-i18n="res.label.time">Time</label><input id="time" type="time" value="10:00"></div>
               </div>
               <div class="row2">
-                <div class="field"><label for="vehicle">Vehicle</label>
-                  <select id="vehicle"><option value="1">Sedan · up to 3</option><option value="1.35">SUV · up to 5</option><option value="1.7">Van · up to 9</option></select></div>
-                <div class="field"><label for="pax">Guests</label>
+                <div class="field"><label for="vehicle" data-i18n="res.label.vehicle">Vehicle</label>
+                  <select id="vehicle"><option value="1" data-i18n="res.opt.sedan">Sedan · up to 3</option><option value="1.35" data-i18n="res.opt.suv">SUV · up to 5</option><option value="1.7" data-i18n="res.opt.van">Van · up to 9</option></select></div>
+                <div class="field"><label for="pax" data-i18n="res.label.pax">Guests</label>
                   <select id="pax"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></div>
               </div>
-              <div class="estimate"><span class="lbl">Estimated price</span><span class="amt" id="fare">₩65,000 <small id="fareUsd">≈ $48</small></span></div>
-              <button type="submit" class="btn btn-coral" style="width:100%;justify-content:center">Request this ride</button>
+              <div class="estimate"><span class="lbl" data-i18n="res.estimate.lbl">Estimated price</span><span class="amt" id="fare">₩65,000 <small id="fareUsd">≈ $48</small></span></div>
+              <button type="submit" class="btn btn-coral" style="width:100%;justify-content:center" data-i18n="res.submit">Request this ride</button>
               <div class="confirm-msg" id="confirmMsg"></div>
             </form>
           </div>
@@ -422,70 +449,70 @@
   <!-- III Shopping -->
   <section class="block svc-section" id="svc-shopping">
     <div class="wrap">
-      <div class="section-head"><span class="kicker">🛍️ Shopping</span><h2>Shopping made easy</h2><p>From the world's biggest department store to hidden market lanes — with a personal shopper, translation, and tax refunds sorted.</p></div>
+      <div class="section-head"><span class="kicker" data-i18n="shop.kicker">🛍️ Shopping</span><h2 data-i18n="shop.h2">Shopping made easy</h2><p data-i18n="shop.p">From the world's biggest department store to hidden market lanes — with a personal shopper, translation, and tax refunds sorted.</p></div>
       <div class="svc-grid">
-        <div class="svc-card"><div class="sc-ic">🏬</div><h3>Department stores & luxury</h3><p>Shinsegae Centum City — the world's largest department store — plus Lotte and flagship boutiques, with a personal shopper.</p></div>
-        <div class="svc-card"><div class="sc-ic">💄</div><h3>K-beauty & skincare</h3><p>The best skincare, cosmetics, and fragrance shops, with guidance and translation on hand.</p></div>
-        <div class="svc-card"><div class="sc-ic">🛒</div><h3>Markets & vintage</h3><p>Gukje and Bupyeong markets, antiques, and the local lanes only insiders know.</p></div>
-        <div class="svc-card"><div class="sc-ic">📦</div><h3>Duty-free & delivery</h3><p>VIP duty-free access and delivery to your hotel or the airport, so you travel light.</p></div>
+        <div class="svc-card"><div class="sc-ic">🏬</div><h3 data-i18n="shop.card1.h3">Department stores & luxury</h3><p data-i18n="shop.card1.p">Shinsegae Centum City — the world's largest department store — plus Lotte and flagship boutiques, with a personal shopper.</p></div>
+        <div class="svc-card"><div class="sc-ic">💄</div><h3 data-i18n="shop.card2.h3">K-beauty & skincare</h3><p data-i18n="shop.card2.p">The best skincare, cosmetics, and fragrance shops, with guidance and translation on hand.</p></div>
+        <div class="svc-card"><div class="sc-ic">🛒</div><h3 data-i18n="shop.card3.h3">Markets & vintage</h3><p data-i18n="shop.card3.p">Gukje and Bupyeong markets, antiques, and the local lanes only insiders know.</p></div>
+        <div class="svc-card"><div class="sc-ic">📦</div><h3 data-i18n="shop.card4.h3">Duty-free & delivery</h3><p data-i18n="shop.card4.p">VIP duty-free access and delivery to your hotel or the airport, so you travel light.</p></div>
       </div>
-      <div class="svc-note">💡 Tax-refund paperwork, sizing, and shipping abroad — all handled for you.</div>
+      <div class="svc-note" data-i18n="shop.note">💡 Tax-refund paperwork, sizing, and shipping abroad — all handled for you.</div>
     </div>
   </section>
 
   <!-- IV Translation -->
   <section class="block svc-section alt" id="svc-translation">
     <div class="wrap">
-      <div class="section-head"><span class="kicker">💬 Translation</span><h2>Never lost in translation</h2><p>Professional interpreters and translators for meetings, clinics, and everyday moments.</p></div>
+      <div class="section-head"><span class="kicker" data-i18n="tr.kicker">💬 Translation</span><h2 data-i18n="tr.h2">Never lost in translation</h2><p data-i18n="tr.p">Professional interpreters and translators for meetings, clinics, and everyday moments.</p></div>
       <div class="svc-grid three">
-        <div class="svc-card"><div class="sc-ic">🤝</div><h3>Live interpretation</h3><p>Meetings, negotiations, and site visits, with a professional right beside you.</p></div>
-        <div class="svc-card"><div class="sc-ic">🩺</div><h3>Medical interpretation</h3><p>We come with you to hospitals and clinics, so every visit is clear.</p></div>
-        <div class="svc-card"><div class="sc-ic">📄</div><h3>Document translation</h3><p>Contracts, certificates, and itineraries — translated quickly and accurately.</p></div>
+        <div class="svc-card"><div class="sc-ic">🤝</div><h3 data-i18n="tr.card1.h3">Live interpretation</h3><p data-i18n="tr.card1.p">Meetings, negotiations, and site visits, with a professional right beside you.</p></div>
+        <div class="svc-card"><div class="sc-ic">🩺</div><h3 data-i18n="tr.card2.h3">Medical interpretation</h3><p data-i18n="tr.card2.p">We come with you to hospitals and clinics, so every visit is clear.</p></div>
+        <div class="svc-card"><div class="sc-ic">📄</div><h3 data-i18n="tr.card3.h3">Document translation</h3><p data-i18n="tr.card3.p">Contracts, certificates, and itineraries — translated quickly and accurately.</p></div>
       </div>
-      <div class="badges"><span>🗣️ English · Korean · Chinese · Japanese</span><span>📞 Phone interpretation, any time</span></div>
+      <div class="badges"><span data-i18n="tr.badge1">🗣️ English · Korean · Chinese · Japanese</span><span data-i18n="tr.badge2">📞 Phone interpretation, any time</span></div>
     </div>
   </section>
 
   <!-- V Medical Tour -->
   <section class="block svc-section" id="svc-medical">
     <div class="wrap">
-      <div class="section-head"><span class="kicker">🏥 Medical Tour</span><h2>Top care, fully arranged</h2><p>Korea is a world leader in medicine and skincare. We book the appointments, bring the interpreter, and sort the transport and aftercare.</p></div>
+      <div class="section-head"><span class="kicker" data-i18n="med.kicker">🏥 Medical Tour</span><h2 data-i18n="med.h2">Top care, fully arranged</h2><p data-i18n="med.p">Korea is a world leader in medicine and skincare. We book the appointments, bring the interpreter, and sort the transport and aftercare.</p></div>
       <div class="svc-grid">
-        <div class="svc-card"><div class="sc-ic">🩺</div><h3>Health check-ups</h3><p>Full screenings and diagnostics at Busan's leading hospitals, around your schedule.</p></div>
-        <div class="svc-card"><div class="sc-ic">✨</div><h3>Skincare & aesthetics</h3><p>Trusted skin, cosmetic, and anti-ageing clinics, with honest guidance and full privacy.</p></div>
-        <div class="svc-card"><div class="sc-ic">🦷</div><h3>Dental care</h3><p>Implants, whitening, and cosmetic dentistry from accredited specialists.</p></div>
-        <div class="svc-card"><div class="sc-ic">🌿</div><h3>Wellness & recovery</h3><p>Spa, Korean medicine, and restful recovery stays to round off your visit.</p></div>
+        <div class="svc-card"><div class="sc-ic">🩺</div><h3 data-i18n="med.card1.h3">Health check-ups</h3><p data-i18n="med.card1.p">Full screenings and diagnostics at Busan's leading hospitals, around your schedule.</p></div>
+        <div class="svc-card"><div class="sc-ic">✨</div><h3 data-i18n="med.card2.h3">Skincare & aesthetics</h3><p data-i18n="med.card2.p">Trusted skin, cosmetic, and anti-ageing clinics, with honest guidance and full privacy.</p></div>
+        <div class="svc-card"><div class="sc-ic">🦷</div><h3 data-i18n="med.card3.h3">Dental care</h3><p data-i18n="med.card3.p">Implants, whitening, and cosmetic dentistry from accredited specialists.</p></div>
+        <div class="svc-card"><div class="sc-ic">🌿</div><h3 data-i18n="med.card4.h3">Wellness & recovery</h3><p data-i18n="med.card4.p">Spa, Korean medicine, and restful recovery stays to round off your visit.</p></div>
       </div>
-      <div class="svc-note">💡 A coordinator and medical interpreter stay with you from first appointment to aftercare.</div>
+      <div class="svc-note" data-i18n="med.note">💡 A coordinator and medical interpreter stay with you from first appointment to aftercare.</div>
     </div>
   </section>
 
   <!-- VI VIP Concierge -->
   <section class="block svc-section alt" id="svc-vip">
     <div class="wrap">
-      <div class="section-head"><span class="kicker">✨ VIP Concierge</span><h2>One person for anything you need</h2><p>Your own concierge in Busan — from a last-minute table to a full custom trip. You ask, we handle it.</p></div>
+      <div class="section-head"><span class="kicker" data-i18n="vip.kicker">✨ VIP Concierge</span><h2 data-i18n="vip.h2">One person for anything you need</h2><p data-i18n="vip.p">Your own concierge in Busan — from a last-minute table to a full custom trip. You ask, we handle it.</p></div>
       <div class="panel">
         <ul class="cc-list">
-          <li>Personal guide & private driver</li>
-          <li>Top restaurants & hard-to-get reservations</li>
-          <li>Hanok stays, yacht charters & private spa</li>
-          <li>Tickets, events & after-hours access</li>
-          <li>Personal shopping & translation</li>
-          <li>Anything else — just ask</li>
+          <li data-i18n="vip.list1">Personal guide & private driver</li>
+          <li data-i18n="vip.list2">Top restaurants & hard-to-get reservations</li>
+          <li data-i18n="vip.list3">Hanok stays, yacht charters & private spa</li>
+          <li data-i18n="vip.list4">Tickets, events & after-hours access</li>
+          <li data-i18n="vip.list5">Personal shopping & translation</li>
+          <li data-i18n="vip.list6">Anything else — just ask</li>
         </ul>
         <div class="inquiry" id="inquiryForm">
-          <h3>Tell us what you need</h3>
-          <p class="sub">Send us a few details and we'll get back to you within 24 hours.</p>
+          <h3 data-i18n="vip.form.h3">Tell us what you need</h3>
+          <p class="sub" data-i18n="vip.form.sub">Send us a few details and we'll get back to you within 24 hours.</p>
           <form id="conciergeForm">
             <div class="inq-grid">
-              <div class="field"><label for="cName">Name</label><input id="cName" type="text" placeholder="Your name" required></div>
-              <div class="field"><label for="cEmail">Email</label><input id="cEmail" type="email" placeholder="you@example.com" required></div>
-              <div class="field"><label for="cInterest">What you need</label>
-                <select id="cInterest"><option>VIP concierge (everything)</option><option>Private tour guide</option><option>Shopping</option><option>Medical tour</option><option>Translation</option><option>Something else</option></select></div>
-              <div class="field"><label for="cDates">Travel dates (approx.)</label><input id="cDates" type="text" placeholder="e.g. mid-September, 4 days"></div>
-              <div class="field inq-full"><label for="cMsg">Tell us more</label><textarea id="cMsg" placeholder="Group size, interests, budget — anything helps us plan."></textarea></div>
+              <div class="field"><label for="cName" data-i18n="vip.label.name">Name</label><input id="cName" type="text" placeholder="Your name" required data-i18n-placeholder="common.ph.name"></div>
+              <div class="field"><label for="cEmail" data-i18n="vip.label.email">Email</label><input id="cEmail" type="email" placeholder="you@example.com" required data-i18n-placeholder="common.ph.email"></div>
+              <div class="field"><label for="cInterest" data-i18n="vip.label.interest">What you need</label>
+                <select id="cInterest"><option data-i18n="vip.opt1">VIP concierge (everything)</option><option data-i18n="vip.opt2">Private tour guide</option><option data-i18n="vip.opt3">Shopping</option><option data-i18n="vip.opt4">Medical tour</option><option data-i18n="vip.opt5">Translation</option><option data-i18n="vip.opt6">Something else</option></select></div>
+              <div class="field"><label for="cDates" data-i18n="vip.label.dates">Travel dates (approx.)</label><input id="cDates" type="text" placeholder="e.g. mid-September, 4 days" data-i18n-placeholder="vip.ph.dates"></div>
+              <div class="field inq-full"><label for="cMsg" data-i18n="vip.label.msg">Tell us more</label><textarea id="cMsg" placeholder="Group size, interests, budget — anything helps us plan." data-i18n-placeholder="vip.ph.msg"></textarea></div>
             </div>
-            <button type="submit" class="btn btn-coral">Send request</button>
+            <button type="submit" class="btn btn-coral" data-i18n="vip.submit">Send request</button>
             <div class="confirm-msg" id="cConfirm"></div>
           </form>
         </div>
@@ -496,31 +523,31 @@
 
 <!-- ============ FOR BUSINESS ============ -->
 <section class="page" id="page-business">
-  <div class="page-hero"><div class="wrap"><div class="crumb">For business</div><h1>Doing business in Korea? We'll help.</h1><p>Here for work, or want to connect with Korean companies? We set up the introductions, the interpreters, and the on-the-ground support.</p></div></div>
+  <div class="page-hero"><div class="wrap"><div class="crumb" data-i18n="biz.crumb">For business</div><h1 data-i18n="biz.h1">Doing business in Korea? We'll help.</h1><p data-i18n="biz.p">Here for work, or want to connect with Korean companies? We set up the introductions, the interpreters, and the on-the-ground support.</p></div></div>
   <section class="block">
     <div class="wrap">
       <div class="panel">
         <ul class="cc-list">
-          <li>Introductions to partners & suppliers</li>
-          <li>Interpreters & meeting coordination</li>
-          <li>Market visits, factory tours & networking</li>
-          <li>Conference & delegation support</li>
-          <li>Corporate transport & concierge</li>
-          <li>Document translation & follow-up</li>
+          <li data-i18n="biz.list1">Introductions to partners & suppliers</li>
+          <li data-i18n="biz.list2">Interpreters & meeting coordination</li>
+          <li data-i18n="biz.list3">Market visits, factory tours & networking</li>
+          <li data-i18n="biz.list4">Conference & delegation support</li>
+          <li data-i18n="biz.list5">Corporate transport & concierge</li>
+          <li data-i18n="biz.list6">Document translation & follow-up</li>
         </ul>
         <div class="inquiry" id="bizInquiry">
-          <h3>Tell us about your business</h3>
-          <p class="sub">Share your goals and we'll get back to you within 24 hours.</p>
+          <h3 data-i18n="biz.form.h3">Tell us about your business</h3>
+          <p class="sub" data-i18n="biz.form.sub">Share your goals and we'll get back to you within 24 hours.</p>
           <form id="bizForm">
             <div class="inq-grid">
-              <div class="field"><label for="bName">Name</label><input id="bName" type="text" placeholder="Your name" required></div>
-              <div class="field"><label for="bEmail">Work email</label><input id="bEmail" type="email" placeholder="you@company.com" required></div>
-              <div class="field"><label for="bCompany">Company</label><input id="bCompany" type="text" placeholder="Company name"></div>
-              <div class="field"><label for="bNeed">What you need</label>
-                <select id="bNeed"><option>Introductions to Korean companies</option><option>Interpreter & meeting support</option><option>Market visit / delegation</option><option>Document translation</option><option>Executive transport</option><option>Something else</option></select></div>
-              <div class="field inq-full"><label for="bMsg">Your goals</label><textarea id="bMsg" placeholder="Industry, companies of interest, dates, and what a good trip looks like."></textarea></div>
+              <div class="field"><label for="bName" data-i18n="biz.label.name">Name</label><input id="bName" type="text" placeholder="Your name" required data-i18n-placeholder="common.ph.name"></div>
+              <div class="field"><label for="bEmail" data-i18n="biz.label.email">Work email</label><input id="bEmail" type="email" placeholder="you@company.com" required data-i18n-placeholder="biz.ph.email"></div>
+              <div class="field"><label for="bCompany" data-i18n="biz.label.company">Company</label><input id="bCompany" type="text" placeholder="Company name" data-i18n-placeholder="biz.ph.company"></div>
+              <div class="field"><label for="bNeed" data-i18n="biz.label.need">What you need</label>
+                <select id="bNeed"><option data-i18n="biz.opt1">Introductions to Korean companies</option><option data-i18n="biz.opt2">Interpreter & meeting support</option><option data-i18n="biz.opt3">Market visit / delegation</option><option data-i18n="biz.opt4">Document translation</option><option data-i18n="biz.opt5">Executive transport</option><option data-i18n="biz.opt6">Something else</option></select></div>
+              <div class="field inq-full"><label for="bMsg" data-i18n="biz.label.msg">Your goals</label><textarea id="bMsg" placeholder="Industry, companies of interest, dates, and what a good trip looks like." data-i18n-placeholder="biz.ph.msg"></textarea></div>
             </div>
-            <button type="submit" class="btn btn-coral">Send request</button>
+            <button type="submit" class="btn btn-coral" data-i18n="biz.submit">Send request</button>
             <div class="confirm-msg" id="bConfirm"></div>
           </form>
         </div>
@@ -531,32 +558,27 @@
 
 <!-- ============ CONTACT ============ -->
 <section class="page" id="page-contact">
-  <div class="page-hero"><div class="wrap"><div class="crumb">Contact</div><h1>Talk to us</h1><p>Questions about a service or booking? We usually reply within a few hours.</p></div></div>
+  <div class="page-hero"><div class="wrap"><div class="crumb" data-i18n="contact.crumb">Contact</div><h1 data-i18n="contact.h1">Talk to us</h1><p data-i18n="contact.p">Questions about a service or booking? We usually reply within a few hours.</p></div></div>
   <section class="block">
     <div class="wrap">
       <div class="contact-grid">
         <div class="contact-info">
-          <div class="ci-card"><div class="ci-ico">✉️</div><div><h4>Email</h4><p><a href="mailto:hello@hellobusan.com">hello@hellobusan.com</a> · reply within a few hours</p></div></div>
-          <div class="ci-card"><div class="ci-ico">📞</div><div><h4>Phone</h4><p><a href="tel:+82511234567">+82 51-123-4567</a> · daily 8:00–22:00 KST</p></div></div>
-          <div class="ci-card"><div class="ci-ico">💬</div><div><h4>KakaoTalk</h4><p>@helloBusan · fastest for quick questions</p></div></div>
-          <div class="ci-card"><div class="ci-ico">📍</div><div><h4>Office</h4><p>Haeundae-gu, Busan · near Haeundae Beach Station, Exit 3</p></div></div>
-          <div class="ci-card"><div class="ci-ico">🕐</div><div><h4>Hours</h4><p>Booking support 24/7 · office visits by appointment</p></div></div>
-          <div class="socials">
-            <a data-page="contact">Instagram</a><a data-page="contact">YouTube</a><a data-page="contact">WhatsApp</a><a data-page="contact">Kakao</a>
-          </div>
+          <div class="ci-card"><div class="ci-ico">✉️</div><div><h4 data-i18n="contact.email.h4">Email</h4><p><a href="mailto:jenny@thesonlab.com">jenny@thesonlab.com</a> · <span data-i18n="contact.email.p">reply within a few hours</span></p></div></div>
+          <div class="ci-card"><div class="ci-ico">📞</div><div><h4 data-i18n="contact.phone.h4">Phone</h4><p><a href="tel:+821075909761">+82 10 7590 9761</a> · <span data-i18n="contact.phone.p">also reachable via</span> <a href="https://wa.me/821075909761" target="_blank" rel="noopener">WhatsApp</a></p></div></div>
+          <div class="ci-card"><div class="ci-ico">🕐</div><div><h4 data-i18n="contact.hours.h4">Hours</h4><p data-i18n="contact.hours.p">Booking support 24/7</p></div></div>
         </div>
         <div class="contact-form">
-          <h3>Send a message</h3>
-          <p class="sub">Fill this in and we'll reply by email.</p>
+          <h3 data-i18n="contact.form.h3">Send a message</h3>
+          <p class="sub" data-i18n="contact.form.sub">Fill this in and we'll reply by email.</p>
           <form id="msgForm">
             <div class="row2">
-              <div class="field"><label for="ctName">Name</label><input id="ctName" type="text" placeholder="Your name" required></div>
-              <div class="field"><label for="ctEmail">Email</label><input id="ctEmail" type="email" placeholder="you@example.com" required></div>
+              <div class="field"><label for="ctName" data-i18n="contact.label.name">Name</label><input id="ctName" type="text" placeholder="Your name" required data-i18n-placeholder="common.ph.name"></div>
+              <div class="field"><label for="ctEmail" data-i18n="contact.label.email">Email</label><input id="ctEmail" type="email" placeholder="you@example.com" required data-i18n-placeholder="common.ph.email"></div>
             </div>
-            <div class="field"><label for="ctTopic">Subject</label>
-              <select id="ctTopic"><option>General question</option><option>Private tour guide</option><option>Reservation (stay, dining, car)</option><option>Shopping</option><option>Translation</option><option>Medical tour</option><option>VIP concierge</option><option>For business</option></select></div>
-            <div class="field"><label for="ctMsg">Message</label><textarea id="ctMsg" placeholder="How can we help?" required></textarea></div>
-            <button type="submit" class="btn btn-coral" style="width:100%;justify-content:center">Send message</button>
+            <div class="field"><label for="ctTopic" data-i18n="contact.label.subject">Subject</label>
+              <select id="ctTopic"><option data-i18n="contact.opt1">General question</option><option data-i18n="contact.opt2">Private tour guide</option><option data-i18n="contact.opt3">Reservation (stay, dining, car)</option><option data-i18n="contact.opt4">Shopping</option><option data-i18n="contact.opt5">Translation</option><option data-i18n="contact.opt6">Medical tour</option><option data-i18n="contact.opt7">VIP concierge</option><option data-i18n="contact.opt8">For business</option></select></div>
+            <div class="field"><label for="ctMsg" data-i18n="contact.label.msg">Message</label><textarea id="ctMsg" placeholder="How can we help?" required data-i18n-placeholder="contact.ph.msg"></textarea></div>
+            <button type="submit" class="btn btn-coral" style="width:100%;justify-content:center" data-i18n="contact.submit">Send message</button>
             <div class="confirm-msg" id="ctConfirm"></div>
           </form>
         </div>
@@ -574,32 +596,31 @@
       <div>
         <div class="brand" data-page="home" style="cursor:pointer">
           <svg class="logo-mark" width="34" height="34" viewBox="0 0 44 44" aria-hidden="true">
-            <rect width="44" height="44" rx="11" fill="#e8a13c"/>
+            <rect width="44" height="44" rx="11" fill="#023E8A"/>
             <path d="M10 27 q6 -7 12 0 t12 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
             <circle cx="29" cy="15" r="3.2" fill="#fff"/>
           </svg>
           <span class="wordmark">hello<b>Busan</b></span>
         </div>
-        <p class="foot-about">Your local team in Busan — guides, reservations, shopping, translation, medical, and a concierge for anything else.</p>
+        <p class="foot-about" data-i18n="foot.about">Your local team in Busan — guides, reservations, shopping, translation, medical, and a concierge for anything else.</p>
       </div>
-      <div><h4>Services</h4><ul>
-        <li><a data-page="services" data-section="svc-tourguide">Private Tour Guide</a></li>
-        <li><a data-page="services" data-section="svc-reservation">Reservation</a></li>
-        <li><a data-page="services" data-section="svc-shopping">Shopping</a></li>
-        <li><a data-page="services" data-section="svc-translation">Translation</a></li>
-        <li><a data-page="services" data-section="svc-medical">Medical Tour</a></li>
-        <li><a data-page="services" data-section="svc-vip">VIP Concierge</a></li></ul></div>
-      <div><h4>Company</h4><ul>
-        <li><a data-page="home">Home</a></li>
-        <li><a data-page="business">For Business</a></li>
-        <li><a data-page="contact">Contact</a></li></ul></div>
-      <div><h4>Get in touch</h4><ul>
-        <li><a data-page="contact">Email us</a></li>
-        <li><a data-page="contact">KakaoTalk</a></li>
-        <li><a data-page="contact">Office</a></li></ul></div>
+      <div><h4 data-i18n="foot.h4.services">Services</h4><ul>
+        <li><a data-page="services" data-section="svc-tourguide" data-i18n="nav.dd.tourguide">Private Tour Guide</a></li>
+        <li><a data-page="services" data-section="svc-reservation" data-i18n="nav.dd.reservation">Reservation</a></li>
+        <li><a data-page="services" data-section="svc-shopping" data-i18n="nav.dd.shopping">Shopping</a></li>
+        <li><a data-page="services" data-section="svc-translation" data-i18n="nav.dd.translation">Translation</a></li>
+        <li><a data-page="services" data-section="svc-medical" data-i18n="nav.dd.medical">Medical Tour</a></li>
+        <li><a data-page="services" data-section="svc-vip" data-i18n="nav.dd.vip">VIP Concierge</a></li></ul></div>
+      <div><h4 data-i18n="foot.h4.company">Company</h4><ul>
+        <li><a data-page="home" data-i18n="nav.home">Home</a></li>
+        <li><a data-page="business" data-i18n="nav.business">For Business</a></li>
+        <li><a data-page="contact" data-i18n="foot.contact">Contact</a></li></ul></div>
+      <div><h4 data-i18n="foot.h4.touch">Get in touch</h4><ul>
+        <li><a data-page="contact" data-i18n="foot.emailus">Email us</a></li>
+        <li><a data-page="contact" data-i18n="foot.phonewa">Phone / WhatsApp</a></li></ul></div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 helloBusan — a demo travel-concierge site.</span>
+      <span data-i18n="foot.bottom">© 2026 helloBusan — a demo travel-concierge site.</span>
       <span>Busan · 부산 · South Korea</span>
     </div>
   </div>
@@ -727,10 +748,49 @@ wireEnquiry('conciergeForm','cConfirm','cName','cInterest');
 wireEnquiry('bizForm','bConfirm','bName','bNeed');
 wireEnquiry('msgForm','ctConfirm','ctName','ctTopic');
 
+
+/* ---------------- I18N ---------------- */
+const I18N = {"nav.home": {"en": "Home", "de": "Start", "ko": "홈"}, "nav.services": {"en": "Services", "de": "Leistungen", "ko": "서비스"}, "nav.dd.tourguide": {"en": "Private Tour Guide", "de": "Privater Reiseführer", "ko": "프라이빗 투어 가이드"}, "nav.dd.reservation": {"en": "Reservation", "de": "Reservierung", "ko": "예약"}, "nav.dd.shopping": {"en": "Shopping", "de": "Shopping", "ko": "쇼핑"}, "nav.dd.translation": {"en": "Translation", "de": "Übersetzung", "ko": "통역/번역"}, "nav.dd.medical": {"en": "Medical Tour", "de": "Medizinische Reise", "ko": "메디컬 투어"}, "nav.dd.vip": {"en": "VIP Concierge", "de": "VIP-Concierge", "ko": "VIP 컨시어지"}, "nav.business": {"en": "For Business", "de": "Für Unternehmen", "ko": "비즈니스"}, "nav.contact": {"en": "Contact us", "de": "Kontakt", "ko": "문의하기"}, "hero.pill": {"en": "🌊 Your local team in Busan", "de": "🌊 Ihr lokales Team in Busan", "ko": "🌊 부산 현지 전담팀"}, "hero.h1a": {"en": "Your Busan trip,", "de": "Ihre Busan-Reise,", "ko": "당신의 부산 여행,"}, "hero.h1b": {"en": "handled.", "de": "bestens organisiert.", "ko": "저희가 책임집니다."}, "hero.lead": {"en": "Private guides, easy reservations, shopping, translation, medical visits, and a concierge who takes care of the details — so you can just enjoy Busan.", "de": "Private Guides, einfache Reservierungen, Shopping, Übersetzung, medizinische Termine und ein Concierge, der sich um alle Details kümmert — damit Sie Busan einfach genießen können.", "ko": "프라이빗 가이드, 손쉬운 예약, 쇼핑, 통역, 메디컬 투어, 그리고 모든 디테일을 챙기는 컨시어지까지 — 당신은 그저 부산을 즐기시면 됩니다."}, "hero.cta1": {"en": "See what we do", "de": "Unser Angebot entdecken", "ko": "서비스 살펴보기"}, "hero.cta2": {"en": "Talk to us", "de": "Kontaktieren Sie uns", "ko": "문의하기"}, "hero.chip.tourguide": {"en": "🧭 Tour guide", "de": "🧭 Reiseführer", "ko": "🧭 투어 가이드"}, "hero.chip.reservation": {"en": "📅 Reservations", "de": "📅 Reservierungen", "ko": "📅 예약"}, "hero.chip.shopping": {"en": "🛍️ Shopping", "de": "🛍️ Shopping", "ko": "🛍️ 쇼핑"}, "hero.chip.translation": {"en": "💬 Translation", "de": "💬 Übersetzung", "ko": "💬 통역"}, "hero.chip.medical": {"en": "🏥 Medical", "de": "🏥 Medizinisch", "ko": "🏥 메디컬"}, "hero.chip.vip": {"en": "✨ VIP concierge", "de": "✨ VIP-Concierge", "ko": "✨ VIP 컨시어지"}, "home.kicker": {"en": "What we do", "de": "Was wir tun", "ko": "제공 서비스"}, "home.h2": {"en": "Six ways we make Busan easy", "de": "Sechs Wege, wie wir Busan einfach machen", "ko": "부산을 쉽게 만드는 6가지 방법"}, "home.p": {"en": "One local team, everything sorted. Pick what you need — or let us handle it all.", "de": "Ein lokales Team, alles organisiert. Wählen Sie, was Sie brauchen — oder lassen Sie uns alles übernehmen.", "ko": "하나의 현지 팀이 모든 것을 준비합니다. 필요한 것만 고르거나, 전부 저희에게 맡겨보세요."}, "feat.tourguide.h3": {"en": "Private Tour Guide", "de": "Privater Reiseführer", "ko": "프라이빗 투어 가이드"}, "feat.tourguide.p": {"en": "Experienced guides in English, German & Korean — every day built around what you want to see.", "de": "Erfahrene Guides auf Englisch, Deutsch & Koreanisch — jeder Tag ganz nach Ihren Wünschen gestaltet.", "ko": "영어, 독일어, 한국어가 가능한 경험 많은 가이드가 원하는 것을 중심으로 하루를 구성합니다."}, "feat.reservation.h3": {"en": "Reservation", "de": "Reservierung", "ko": "예약"}, "feat.reservation.p": {"en": "Hotels, restaurants, and a private car — booked for you, no Korean or foreign-card headaches.", "de": "Hotels, Restaurants und ein Privatwagen — für Sie gebucht, ohne koreanische Seiten oder Probleme mit ausländischen Karten.", "ko": "호텔, 레스토랑, 프라이빗 차량까지 — 한국어나 해외카드 걱정 없이 대신 예약해 드립니다."}, "feat.shopping.h3": {"en": "Shopping", "de": "Shopping", "ko": "쇼핑"}, "feat.shopping.p": {"en": "Personal shopping from big department stores to K-beauty and local markets, tax refund included.", "de": "Personal Shopping von großen Kaufhäusern bis K-Beauty und lokalen Märkten, inklusive Steuerrückerstattung.", "ko": "대형 백화점부터 K-뷰티, 로컬 마켓까지 — 세금 환급까지 포함한 퍼스널 쇼핑."}, "feat.translation.h3": {"en": "Translation", "de": "Übersetzung", "ko": "통역/번역"}, "feat.translation.p": {"en": "Interpreters and document translation in English, Korean, Chinese, and Japanese.", "de": "Dolmetscher und Dokumentenübersetzung auf Englisch, Koreanisch, Chinesisch und Japanisch.", "ko": "영어, 한국어, 중국어, 일본어 통역 및 문서 번역 서비스."}, "feat.medical.h3": {"en": "Medical Tour", "de": "Medizinische Reise", "ko": "메디컬 투어"}, "feat.medical.p": {"en": "Check-ups, skincare, dental, and wellness — appointments and an interpreter all arranged.", "de": "Check-ups, Hautpflege, Zahnbehandlungen und Wellness — Termine und Dolmetscher komplett organisiert.", "ko": "건강검진, 피부관리, 치과, 웰니스까지 — 예약과 통역을 모두 준비해 드립니다."}, "feat.vip.h3": {"en": "VIP Concierge", "de": "VIP-Concierge", "ko": "VIP 컨시어지"}, "feat.vip.p": {"en": "One person to call for anything — we handle the rest, day or night.", "de": "Eine Ansprechperson für alles — wir übernehmen den Rest, Tag und Nacht.", "ko": "무엇이든 연락할 단 한 사람 — 밤낮없이 나머지는 저희가 처리합니다."}, "common.learnMore": {"en": "Learn more →", "de": "Mehr erfahren →", "ko": "자세히 보기 →"}, "svc.crumb": {"en": "Our services", "de": "Unsere Leistungen", "ko": "서비스 안내"}, "svc.h1": {"en": "Everything you need in Busan", "de": "Alles, was Sie in Busan brauchen", "ko": "부산에서 필요한 모든 것"}, "svc.p": {"en": "From your arrival to your last day — guiding, booking, shopping, translating, and looking after your health.", "de": "Von Ihrer Ankunft bis zum letzten Tag — Führung, Buchung, Shopping, Übersetzung und Gesundheitsversorgung.", "ko": "도착부터 마지막 날까지 — 가이드, 예약, 쇼핑, 통역, 건강관리까지 모두 챙겨드립니다."}, "tg.kicker": {"en": "🧭 Private Tour Guide", "de": "🧭 Privater Reiseführer", "ko": "🧭 프라이빗 투어 가이드"}, "tg.h2": {"en": "Experienced guides, in your language", "de": "Erfahrene Guides, in Ihrer Sprache", "ko": "당신의 언어로 안내하는 전문 가이드"}, "tg.p": {"en": "Explore Busan with a private guide who speaks your language — English, German, or Korean — and builds the day around what you want to see and do.", "de": "Entdecken Sie Busan mit einem privaten Guide, der Ihre Sprache spricht — Englisch, Deutsch oder Koreanisch — und den Tag ganz nach Ihren Wünschen gestaltet.", "ko": "영어, 독일어, 한국어가 가능한 프라이빗 가이드와 함께 부산을 탐험하세요 — 보고 싶은 것을 중심으로 하루를 구성해 드립니다."}, "tg.card1.h3": {"en": "Experienced local guides", "de": "Erfahrene lokale Guides", "ko": "경험 많은 현지 가이드"}, "tg.card1.p": {"en": "Guides who know Busan inside out — the history, the hidden corners, and the spots worth slowing down for.", "de": "Guides, die Busan in- und auswendig kennen — Geschichte, versteckte Ecken und Orte, die eine Pause wert sind.", "ko": "부산을 속속들이 아는 가이드 — 역사, 숨은 명소, 그리고 천천히 즐길 만한 장소까지."}, "tg.card2.h3": {"en": "English · German · Korean", "de": "Englisch · Deutsch · Koreanisch", "ko": "영어 · 독일어 · 한국어"}, "tg.card2.p": {"en": "Pick a guide in your own language, so nothing gets lost and every story makes sense.", "de": "Wählen Sie einen Guide in Ihrer eigenen Sprache, damit nichts verloren geht und jede Geschichte Sinn ergibt.", "ko": "원하는 언어의 가이드를 선택하세요 — 아무것도 놓치지 않고 모든 이야기를 이해할 수 있습니다."}, "tg.card3.h3": {"en": "Curated to your wishes", "de": "Ganz nach Ihren Wünschen", "ko": "당신의 취향에 맞춘 일정"}, "tg.card3.p": {"en": "No fixed itinerary. We shape each day around your interests, your pace, and exactly what you'd like to do.", "de": "Kein festes Programm. Wir gestalten jeden Tag nach Ihren Interessen, Ihrem Tempo und genau dem, was Sie erleben möchten.", "ko": "고정된 일정은 없습니다. 당신의 관심사와 속도에 맞춰, 원하는 것을 정확히 할 수 있도록 하루를 구성합니다."}, "tg.badge1": {"en": "🗣️ English · German · Korean", "de": "🗣️ Englisch · Deutsch · Koreanisch", "ko": "🗣️ 영어 · 독일어 · 한국어"}, "tg.badge2": {"en": "✨ Curated to your needs & wishes", "de": "✨ Ganz nach Ihren Bedürfnissen & Wünschen", "ko": "✨ 원하는 대로 맞춤 구성"}, "tg.cta": {"en": "Book a guide", "de": "Guide buchen", "ko": "가이드 예약하기"}, "res.kicker": {"en": "📅 Reservation", "de": "📅 Reservierung", "ko": "📅 예약"}, "res.h2": {"en": "Booked for you — stay, table, and car", "de": "Für Sie gebucht — Unterkunft, Tisch und Auto", "ko": "숙소, 식당, 차량까지 — 대신 예약해 드립니다"}, "res.p": {"en": "Korean-only site? Foreign card rejected? We book it for you, so you don't have to figure it out.", "de": "Nur koreanische Website? Ausländische Karte abgelehnt? Wir buchen es für Sie, damit Sie sich nicht darum kümmern müssen.", "ko": "한국어 전용 사이트라서, 해외 카드가 거절돼서 곤란하셨나요? 대신 예약해 드리니 걱정하지 않으셔도 됩니다."}, "res.tab.stays": {"en": "Stays", "de": "Unterkunft", "ko": "숙소"}, "res.tab.dining": {"en": "Dining", "de": "Restaurants", "ko": "맛집"}, "res.tab.car": {"en": "Private Car", "de": "Privatwagen", "ko": "프라이빗 차량"}, "res.chip.allareas": {"en": "All areas", "de": "Alle Gebiete", "ko": "전체 지역"}, "res.chip.beach": {"en": "Beach", "de": "Strand", "ko": "해변"}, "res.chip.city": {"en": "City centre", "de": "Stadtzentrum", "ko": "도심"}, "res.chip.views": {"en": "Bridge views", "de": "Brückenblick", "ko": "다리 전망"}, "res.chip.local": {"en": "Old town", "de": "Altstadt", "ko": "구시가지"}, "res.chip.everything": {"en": "Everything", "de": "Alles", "ko": "전체"}, "res.chip.signature": {"en": "Signature", "de": "Signature-Gerichte", "ko": "대표 메뉴"}, "res.chip.seafood": {"en": "Seafood", "de": "Meeresfrüchte", "ko": "해산물"}, "res.chip.street": {"en": "Street food", "de": "Streetfood", "ko": "길거리 음식"}, "res.chip.noodles": {"en": "Noodles", "de": "Nudeln", "ko": "면 요리"}, "res.carinfo.h3": {"en": "Private car & driver", "de": "Privatwagen mit Fahrer", "ko": "프라이빗 차량 & 기사"}, "res.carinfo.p": {"en": "An English-speaking local driver, a fixed price, and a car ready when you are.", "de": "Ein englischsprachiger lokaler Fahrer, ein Festpreis und ein Auto, das bereitsteht, wenn Sie es brauchen.", "ko": "영어가 가능한 현지 기사, 고정 요금, 그리고 원하는 시간에 준비된 차량까지."}, "res.perk1.b": {"en": "English-speaking drivers", "de": "Englischsprachige Fahrer", "ko": "영어 가능 기사"}, "res.perk1.span": {"en": "Friendly locals who know the city", "de": "Freundliche Einheimische, die die Stadt kennen", "ko": "도시를 잘 아는 친절한 현지인"}, "res.perk2.b": {"en": "Fixed, upfront price", "de": "Fester Preis im Voraus", "ko": "사전 확정 요금"}, "res.perk2.span": {"en": "No meters, no surprises", "de": "Kein Taxameter, keine Überraschungen", "ko": "미터기 걱정, 추가 요금 걱정 없음"}, "res.perk3.b": {"en": "Airport pickup & day trips", "de": "Flughafentransfer & Tagesausflüge", "ko": "공항 픽업 & 데이투어"}, "res.perk3.span": {"en": "From Gimhae transfers to full-day tours", "de": "Von Gimhae-Transfers bis Tagestouren", "ko": "김해공항 트랜스퍼부터 종일 투어까지"}, "res.perk4.b": {"en": "Available 24/7", "de": "24/7 verfügbar", "ko": "24시간 연중무휴"}, "res.perk4.span": {"en": "Free cancellation up to 24 hours before", "de": "Kostenlose Stornierung bis 24 Stunden vorher", "ko": "출발 24시간 전까지 무료 취소"}, "res.form.h3": {"en": "Get an instant price", "de": "Sofortpreis erhalten", "ko": "즉시 요금 확인"}, "res.form.sub": {"en": "Tell us your trip and we'll price it right away.", "de": "Erzählen Sie uns von Ihrer Fahrt und wir berechnen sofort den Preis.", "ko": "여행 일정을 알려주시면 바로 요금을 안내해 드립니다."}, "res.label.service": {"en": "Service", "de": "Service", "ko": "서비스"}, "res.opt.airport": {"en": "Airport pickup (Gimhae ⇄ city)", "de": "Flughafentransfer (Gimhae ⇄ Stadt)", "ko": "공항 픽업 (김해 ⇄ 시내)"}, "res.opt.halfday": {"en": "Half-day tour (4 hours)", "de": "Halbtagestour (4 Stunden)", "ko": "반일 투어 (4시간)"}, "res.opt.fullday": {"en": "Full-day tour (8 hours)", "de": "Ganztagestour (8 Stunden)", "ko": "종일 투어 (8시간)"}, "res.opt.pointtopoint": {"en": "Single ride", "de": "Einzelfahrt", "ko": "단거리 이동"}, "res.label.pickup": {"en": "Pickup", "de": "Abholort", "ko": "픽업 장소"}, "res.ph.pickup": {"en": "e.g. Gimhae International Airport", "de": "z. B. Gimhae International Airport", "ko": "예: 김해국제공항"}, "res.label.dest": {"en": "Destination", "de": "Ziel", "ko": "목적지"}, "res.opt.dest1": {"en": "Haeundae Beach", "de": "Haeundae-Strand", "ko": "해운대 해변"}, "res.opt.dest2": {"en": "Seomyeon (city centre)", "de": "Seomyeon (Stadtzentrum)", "ko": "서면 (도심)"}, "res.opt.dest3": {"en": "Gwangalli Beach", "de": "Gwangalli-Strand", "ko": "광안리 해변"}, "res.opt.dest4": {"en": "Nampo-dong / Jagalchi", "de": "Nampo-dong / Jagalchi", "ko": "남포동 / 자갈치"}, "res.opt.dest5": {"en": "Coast & beaches day", "de": "Küsten- & Strandtag", "ko": "해안 & 해변 투어"}, "res.opt.dest6": {"en": "Culture & old town day", "de": "Kultur- & Altstadttag", "ko": "문화 & 구시가지 투어"}, "res.opt.dest7": {"en": "Temples & nature day", "de": "Tempel- & Naturtag", "ko": "사찰 & 자연 투어"}, "res.label.date": {"en": "Date", "de": "Datum", "ko": "날짜"}, "res.label.time": {"en": "Time", "de": "Uhrzeit", "ko": "시간"}, "res.label.vehicle": {"en": "Vehicle", "de": "Fahrzeug", "ko": "차량"}, "res.opt.sedan": {"en": "Sedan · up to 3", "de": "Limousine · bis 3", "ko": "세단 · 최대 3인"}, "res.opt.suv": {"en": "SUV · up to 5", "de": "SUV · bis 5", "ko": "SUV · 최대 5인"}, "res.opt.van": {"en": "Van · up to 9", "de": "Van · bis 9", "ko": "밴 · 최대 9인"}, "res.label.pax": {"en": "Guests", "de": "Gäste", "ko": "인원"}, "res.estimate.lbl": {"en": "Estimated price", "de": "Geschätzter Preis", "ko": "예상 요금"}, "res.submit": {"en": "Request this ride", "de": "Fahrt anfragen", "ko": "이 차량 요청하기"}, "shop.kicker": {"en": "🛍️ Shopping", "de": "🛍️ Shopping", "ko": "🛍️ 쇼핑"}, "shop.h2": {"en": "Shopping made easy", "de": "Shopping leicht gemacht", "ko": "쉬워지는 쇼핑"}, "shop.p": {"en": "From the world's biggest department store to hidden market lanes — with a personal shopper, translation, and tax refunds sorted.", "de": "Vom größten Kaufhaus der Welt bis zu versteckten Marktgassen — mit Personal Shopper, Übersetzung und geregelter Steuerrückerstattung.", "ko": "세계 최대 백화점부터 숨은 시장 골목까지 — 퍼스널 쇼퍼, 통역, 세금 환급까지 모두 해결해 드립니다."}, "shop.card1.h3": {"en": "Department stores & luxury", "de": "Kaufhäuser & Luxus", "ko": "백화점 & 명품"}, "shop.card1.p": {"en": "Shinsegae Centum City — the world's largest department store — plus Lotte and flagship boutiques, with a personal shopper.", "de": "Shinsegae Centum City — das größte Kaufhaus der Welt — sowie Lotte und Flagship-Boutiquen mit Personal Shopper.", "ko": "세계 최대 백화점 신세계 센텀시티는 물론, 롯데와 플래그십 부티크까지 퍼스널 쇼퍼와 함께."}, "shop.card2.h3": {"en": "K-beauty & skincare", "de": "K-Beauty & Hautpflege", "ko": "K-뷰티 & 스킨케어"}, "shop.card2.p": {"en": "The best skincare, cosmetics, and fragrance shops, with guidance and translation on hand.", "de": "Die besten Hautpflege-, Kosmetik- und Parfümgeschäfte, mit Beratung und Übersetzung vor Ort.", "ko": "최고의 스킨케어, 화장품, 향수 매장을 통역과 함께 안내해 드립니다."}, "shop.card3.h3": {"en": "Markets & vintage", "de": "Märkte & Vintage", "ko": "시장 & 빈티지"}, "shop.card3.p": {"en": "Gukje and Bupyeong markets, antiques, and the local lanes only insiders know.", "de": "Gukje- und Bupyeong-Markt, Antiquitäten und die lokalen Gassen, die nur Insider kennen.", "ko": "국제시장과 부평시장, 골동품, 그리고 현지인만 아는 골목까지."}, "shop.card4.h3": {"en": "Duty-free & delivery", "de": "Duty-free & Versand", "ko": "면세 & 배송"}, "shop.card4.p": {"en": "VIP duty-free access and delivery to your hotel or the airport, so you travel light.", "de": "VIP-Duty-free-Zugang und Lieferung in Ihr Hotel oder zum Flughafen, damit Sie leicht reisen.", "ko": "VIP 면세 접근과 호텔 또는 공항으로의 배송까지 — 가볍게 여행하세요."}, "shop.note": {"en": "💡 Tax-refund paperwork, sizing, and shipping abroad — all handled for you.", "de": "💡 Steuerrückerstattung, Größenberatung und Versand ins Ausland — alles für Sie organisiert.", "ko": "💡 세금 환급 서류, 사이즈 확인, 해외 배송까지 모두 대신 처리해 드립니다."}, "tr.kicker": {"en": "💬 Translation", "de": "💬 Übersetzung", "ko": "💬 통역/번역"}, "tr.h2": {"en": "Never lost in translation", "de": "Nie mehr Sprachbarrieren", "ko": "언어 걱정 없이"}, "tr.p": {"en": "Professional interpreters and translators for meetings, clinics, and everyday moments.", "de": "Professionelle Dolmetscher und Übersetzer für Meetings, Kliniken und den Alltag.", "ko": "회의, 병원 방문, 일상 어디서든 전문 통역 및 번역 서비스를 제공합니다."}, "tr.card1.h3": {"en": "Live interpretation", "de": "Live-Dolmetschen", "ko": "실시간 통역"}, "tr.card1.p": {"en": "Meetings, negotiations, and site visits, with a professional right beside you.", "de": "Meetings, Verhandlungen und Besichtigungen, mit einem Profi direkt an Ihrer Seite.", "ko": "회의, 협상, 현장 방문까지 전문 통역사가 함께합니다."}, "tr.card2.h3": {"en": "Medical interpretation", "de": "Medizinisches Dolmetschen", "ko": "의료 통역"}, "tr.card2.p": {"en": "We come with you to hospitals and clinics, so every visit is clear.", "de": "Wir begleiten Sie in Krankenhäuser und Kliniken, damit jeder Termin klar verständlich ist.", "ko": "병원과 클리닉 방문 시 동행하여 모든 상담이 명확하게 전달되도록 돕습니다."}, "tr.card3.h3": {"en": "Document translation", "de": "Dokumentenübersetzung", "ko": "문서 번역"}, "tr.card3.p": {"en": "Contracts, certificates, and itineraries — translated quickly and accurately.", "de": "Verträge, Zertifikate und Reisepläne — schnell und präzise übersetzt.", "ko": "계약서, 증명서, 일정표까지 — 빠르고 정확하게 번역해 드립니다."}, "tr.badge1": {"en": "🗣️ English · Korean · Chinese · Japanese", "de": "🗣️ Englisch · Koreanisch · Chinesisch · Japanisch", "ko": "🗣️ 영어 · 한국어 · 중국어 · 일본어"}, "tr.badge2": {"en": "📞 Phone interpretation, any time", "de": "📞 Telefon-Dolmetschen, jederzeit", "ko": "📞 전화 통역, 언제든지"}, "med.kicker": {"en": "🏥 Medical Tour", "de": "🏥 Medizinische Reise", "ko": "🏥 메디컬 투어"}, "med.h2": {"en": "Top care, fully arranged", "de": "Beste Versorgung, komplett organisiert", "ko": "완벽하게 준비된 최고의 진료"}, "med.p": {"en": "Korea is a world leader in medicine and skincare. We book the appointments, bring the interpreter, and sort the transport and aftercare.", "de": "Korea ist weltweit führend in Medizin und Hautpflege. Wir buchen die Termine, bringen den Dolmetscher und organisieren Transport und Nachsorge.", "ko": "한국은 의료와 피부관리 분야의 세계적 선두주자입니다. 예약부터 통역, 이동과 애프터케어까지 모두 준비해 드립니다."}, "med.card1.h3": {"en": "Health check-ups", "de": "Gesundheits-Check-ups", "ko": "건강검진"}, "med.card1.p": {"en": "Full screenings and diagnostics at Busan's leading hospitals, around your schedule.", "de": "Vollständige Untersuchungen und Diagnostik in Busans führenden Krankenhäusern, ganz nach Ihrem Zeitplan.", "ko": "부산의 최고 병원에서 일정에 맞춰 종합 검진과 진단을 받으실 수 있습니다."}, "med.card2.h3": {"en": "Skincare & aesthetics", "de": "Hautpflege & Ästhetik", "ko": "피부관리 & 에스테틱"}, "med.card2.p": {"en": "Trusted skin, cosmetic, and anti-ageing clinics, with honest guidance and full privacy.", "de": "Vertrauenswürdige Haut-, Schönheits- und Anti-Aging-Kliniken, mit ehrlicher Beratung und vollständiger Privatsphäre.", "ko": "믿을 수 있는 피부, 미용, 안티에이징 클리닉을 솔직한 상담과 철저한 프라이버시로 안내합니다."}, "med.card3.h3": {"en": "Dental care", "de": "Zahnpflege", "ko": "치과 진료"}, "med.card3.p": {"en": "Implants, whitening, and cosmetic dentistry from accredited specialists.", "de": "Implantate, Zahnaufhellung und ästhetische Zahnmedizin von akkreditierten Spezialisten.", "ko": "임플란트, 미백, 심미 치과까지 — 공인된 전문의가 진료합니다."}, "med.card4.h3": {"en": "Wellness & recovery", "de": "Wellness & Erholung", "ko": "웰니스 & 회복"}, "med.card4.p": {"en": "Spa, Korean medicine, and restful recovery stays to round off your visit.", "de": "Spa, koreanische Medizin und erholsame Aufenthalte zur Abrundung Ihres Besuchs.", "ko": "스파, 한방 치료, 편안한 회복 스테이까지 — 여행을 완성해 드립니다."}, "med.note": {"en": "💡 A coordinator and medical interpreter stay with you from first appointment to aftercare.", "de": "💡 Ein Koordinator und ein medizinischer Dolmetscher begleiten Sie vom ersten Termin bis zur Nachsorge.", "ko": "💡 코디네이터와 의료 통역사가 첫 진료부터 애프터케어까지 함께합니다."}, "vip.kicker": {"en": "✨ VIP Concierge", "de": "✨ VIP-Concierge", "ko": "✨ VIP 컨시어지"}, "vip.h2": {"en": "One person for anything you need", "de": "Eine Person für alles, was Sie brauchen", "ko": "무엇이든 해결하는 단 한 사람"}, "vip.p": {"en": "Your own concierge in Busan — from a last-minute table to a full custom trip. You ask, we handle it.", "de": "Ihr persönlicher Concierge in Busan — von einem kurzfristigen Tisch bis zur kompletten individuellen Reise. Sie fragen, wir übernehmen.", "ko": "부산에서 당신만의 컨시어지 — 급한 예약부터 맞춤 여행 전체까지. 요청만 하시면 저희가 처리합니다."}, "vip.list1": {"en": "Personal guide & private driver", "de": "Persönlicher Guide & privater Fahrer", "ko": "전담 가이드 & 프라이빗 기사"}, "vip.list2": {"en": "Top restaurants & hard-to-get reservations", "de": "Top-Restaurants & schwer zu bekommende Reservierungen", "ko": "인기 레스토랑 & 예약난이도 높은 식당"}, "vip.list3": {"en": "Hanok stays, yacht charters & private spa", "de": "Hanok-Aufenthalte, Yachtcharter & privates Spa", "ko": "한옥 스테이, 요트 차터 & 프라이빗 스파"}, "vip.list4": {"en": "Tickets, events & after-hours access", "de": "Tickets, Events & Zugang außerhalb der Öffnungszeiten", "ko": "티켓, 이벤트 & 애프터아워 액세스"}, "vip.list5": {"en": "Personal shopping & translation", "de": "Personal Shopping & Übersetzung", "ko": "퍼스널 쇼핑 & 통역"}, "vip.list6": {"en": "Anything else — just ask", "de": "Alles andere — fragen Sie einfach", "ko": "그 외 무엇이든 — 요청만 해주세요"}, "vip.form.h3": {"en": "Tell us what you need", "de": "Sagen Sie uns, was Sie brauchen", "ko": "필요한 것을 알려주세요"}, "vip.form.sub": {"en": "Send us a few details and we'll get back to you within 24 hours.", "de": "Senden Sie uns ein paar Details und wir melden uns innerhalb von 24 Stunden.", "ko": "간단한 정보를 보내주시면 24시간 내로 연락드립니다."}, "vip.label.name": {"en": "Name", "de": "Name", "ko": "이름"}, "vip.label.email": {"en": "Email", "de": "E-Mail", "ko": "이메일"}, "vip.label.interest": {"en": "What you need", "de": "Was Sie brauchen", "ko": "필요한 서비스"}, "vip.opt1": {"en": "VIP concierge (everything)", "de": "VIP-Concierge (alles)", "ko": "VIP 컨시어지 (전체)"}, "vip.opt2": {"en": "Private tour guide", "de": "Privater Reiseführer", "ko": "프라이빗 투어 가이드"}, "vip.opt3": {"en": "Shopping", "de": "Shopping", "ko": "쇼핑"}, "vip.opt4": {"en": "Medical tour", "de": "Medizinische Reise", "ko": "메디컬 투어"}, "vip.opt5": {"en": "Translation", "de": "Übersetzung", "ko": "통역/번역"}, "vip.opt6": {"en": "Something else", "de": "Etwas anderes", "ko": "기타"}, "vip.label.dates": {"en": "Travel dates (approx.)", "de": "Reisedaten (ungefähr)", "ko": "여행 일정 (대략)"}, "vip.ph.dates": {"en": "e.g. mid-September, 4 days", "de": "z. B. Mitte September, 4 Tage", "ko": "예: 9월 중순, 4일"}, "vip.label.msg": {"en": "Tell us more", "de": "Erzählen Sie uns mehr", "ko": "자세히 알려주세요"}, "vip.ph.msg": {"en": "Group size, interests, budget — anything helps us plan.", "de": "Gruppengröße, Interessen, Budget — alles hilft uns bei der Planung.", "ko": "인원수, 관심사, 예산 등 — 계획에 도움이 되는 모든 정보를 알려주세요."}, "vip.submit": {"en": "Send request", "de": "Anfrage senden", "ko": "요청 보내기"}, "biz.crumb": {"en": "For business", "de": "Für Unternehmen", "ko": "비즈니스"}, "biz.h1": {"en": "Doing business in Korea? We'll help.", "de": "Geschäfte in Korea? Wir helfen Ihnen.", "ko": "한국에서 사업을 계획 중이신가요? 저희가 도와드립니다."}, "biz.p": {"en": "Here for work, or want to connect with Korean companies? We set up the introductions, the interpreters, and the on-the-ground support.", "de": "Hier für die Arbeit oder möchten Sie Kontakte zu koreanischen Unternehmen aufbauen? Wir organisieren die Vorstellungen, die Dolmetscher und die Unterstützung vor Ort.", "ko": "업무차 방문하셨거나 한국 기업과 연결되고 싶으신가요? 소개부터 통역, 현지 지원까지 모두 준비해 드립니다."}, "biz.list1": {"en": "Introductions to partners & suppliers", "de": "Vorstellung von Partnern & Lieferanten", "ko": "파트너 & 공급업체 소개"}, "biz.list2": {"en": "Interpreters & meeting coordination", "de": "Dolmetscher & Meeting-Koordination", "ko": "통역 & 미팅 코디네이션"}, "biz.list3": {"en": "Market visits, factory tours & networking", "de": "Marktbesuche, Werksbesichtigungen & Networking", "ko": "시장 방문, 공장 투어 & 네트워킹"}, "biz.list4": {"en": "Conference & delegation support", "de": "Konferenz- & Delegationsunterstützung", "ko": "컨퍼런스 & 대표단 지원"}, "biz.list5": {"en": "Corporate transport & concierge", "de": "Firmentransport & Concierge", "ko": "기업 전용 차량 & 컨시어지"}, "biz.list6": {"en": "Document translation & follow-up", "de": "Dokumentenübersetzung & Nachverfolgung", "ko": "문서 번역 & 후속 지원"}, "biz.form.h3": {"en": "Tell us about your business", "de": "Erzählen Sie uns von Ihrem Unternehmen", "ko": "귀사에 대해 알려주세요"}, "biz.form.sub": {"en": "Share your goals and we'll get back to you within 24 hours.", "de": "Teilen Sie uns Ihre Ziele mit und wir melden uns innerhalb von 24 Stunden.", "ko": "목표를 알려주시면 24시간 내로 연락드립니다."}, "biz.label.name": {"en": "Name", "de": "Name", "ko": "이름"}, "biz.label.email": {"en": "Work email", "de": "Geschäftliche E-Mail", "ko": "업무용 이메일"}, "biz.ph.email": {"en": "you@company.com", "de": "sie@unternehmen.com", "ko": "you@company.com"}, "biz.label.company": {"en": "Company", "de": "Unternehmen", "ko": "회사명"}, "biz.ph.company": {"en": "Company name", "de": "Firmenname", "ko": "회사 이름"}, "biz.label.need": {"en": "What you need", "de": "Was Sie brauchen", "ko": "필요한 사항"}, "biz.opt1": {"en": "Introductions to Korean companies", "de": "Vorstellung bei koreanischen Unternehmen", "ko": "한국 기업 소개"}, "biz.opt2": {"en": "Interpreter & meeting support", "de": "Dolmetscher & Meeting-Unterstützung", "ko": "통역 & 미팅 지원"}, "biz.opt3": {"en": "Market visit / delegation", "de": "Marktbesuch / Delegation", "ko": "시장 방문 / 대표단"}, "biz.opt4": {"en": "Document translation", "de": "Dokumentenübersetzung", "ko": "문서 번역"}, "biz.opt5": {"en": "Executive transport", "de": "Transport für Führungskräfte", "ko": "임원 전용 차량"}, "biz.opt6": {"en": "Something else", "de": "Etwas anderes", "ko": "기타"}, "biz.label.msg": {"en": "Your goals", "de": "Ihre Ziele", "ko": "목표"}, "biz.ph.msg": {"en": "Industry, companies of interest, dates, and what a good trip looks like.", "de": "Branche, interessante Unternehmen, Termine und wie eine gute Reise aussehen sollte.", "ko": "산업 분야, 관심 있는 기업, 일정, 원하는 여행의 모습을 알려주세요."}, "biz.submit": {"en": "Send request", "de": "Anfrage senden", "ko": "요청 보내기"}, "contact.crumb": {"en": "Contact", "de": "Kontakt", "ko": "문의"}, "contact.h1": {"en": "Talk to us", "de": "Sprechen Sie mit uns", "ko": "문의하기"}, "contact.p": {"en": "Questions about a service or booking? We usually reply within a few hours.", "de": "Fragen zu einem Service oder einer Buchung? Wir antworten normalerweise innerhalb weniger Stunden.", "ko": "서비스나 예약에 대해 궁금한 점이 있으신가요? 보통 몇 시간 내로 답변드립니다."}, "contact.email.h4": {"en": "Email", "de": "E-Mail", "ko": "이메일"}, "contact.email.p": {"en": "reply within a few hours", "de": "Antwort innerhalb weniger Stunden", "ko": "몇 시간 내 답변"}, "contact.phone.h4": {"en": "Phone", "de": "Telefon", "ko": "전화"}, "contact.phone.p": {"en": "also reachable via", "de": "auch erreichbar über", "ko": "또는"}, "contact.hours.h4": {"en": "Hours", "de": "Öffnungszeiten", "ko": "운영시간"}, "contact.hours.p": {"en": "Booking support 24/7", "de": "Buchungssupport 24/7", "ko": "24시간 연중무휴 예약 지원"}, "contact.form.h3": {"en": "Send a message", "de": "Nachricht senden", "ko": "메시지 보내기"}, "contact.form.sub": {"en": "Fill this in and we'll reply by email.", "de": "Füllen Sie dies aus und wir antworten per E-Mail.", "ko": "아래 양식을 작성해 주시면 이메일로 답변드립니다."}, "contact.label.name": {"en": "Name", "de": "Name", "ko": "이름"}, "contact.label.email": {"en": "Email", "de": "E-Mail", "ko": "이메일"}, "contact.label.subject": {"en": "Subject", "de": "Betreff", "ko": "제목"}, "contact.opt1": {"en": "General question", "de": "Allgemeine Frage", "ko": "일반 문의"}, "contact.opt2": {"en": "Private tour guide", "de": "Privater Reiseführer", "ko": "프라이빗 투어 가이드"}, "contact.opt3": {"en": "Reservation (stay, dining, car)", "de": "Reservierung (Unterkunft, Restaurant, Auto)", "ko": "예약 (숙소, 식당, 차량)"}, "contact.opt4": {"en": "Shopping", "de": "Shopping", "ko": "쇼핑"}, "contact.opt5": {"en": "Translation", "de": "Übersetzung", "ko": "통역/번역"}, "contact.opt6": {"en": "Medical tour", "de": "Medizinische Reise", "ko": "메디컬 투어"}, "contact.opt7": {"en": "VIP concierge", "de": "VIP-Concierge", "ko": "VIP 컨시어지"}, "contact.opt8": {"en": "For business", "de": "Für Unternehmen", "ko": "비즈니스"}, "contact.label.msg": {"en": "Message", "de": "Nachricht", "ko": "메시지"}, "contact.ph.msg": {"en": "How can we help?", "de": "Wie können wir helfen?", "ko": "어떻게 도와드릴까요?"}, "contact.submit": {"en": "Send message", "de": "Nachricht senden", "ko": "메시지 보내기"}, "foot.about": {"en": "Your local team in Busan — guides, reservations, shopping, translation, medical, and a concierge for anything else.", "de": "Ihr lokales Team in Busan — Guides, Reservierungen, Shopping, Übersetzung, Medizin und ein Concierge für alles andere.", "ko": "부산 현지 전담팀 — 가이드, 예약, 쇼핑, 통역, 메디컬, 그 외 모든 것을 위한 컨시어지까지."}, "foot.h4.services": {"en": "Services", "de": "Leistungen", "ko": "서비스"}, "foot.h4.company": {"en": "Company", "de": "Unternehmen", "ko": "회사"}, "foot.h4.touch": {"en": "Get in touch", "de": "Kontakt aufnehmen", "ko": "문의하기"}, "foot.contact": {"en": "Contact", "de": "Kontakt", "ko": "문의"}, "foot.emailus": {"en": "Email us", "de": "Schreiben Sie uns", "ko": "이메일 문의"}, "foot.phonewa": {"en": "Phone / WhatsApp", "de": "Telefon / WhatsApp", "ko": "전화 / 왓츠앱"}, "foot.bottom": {"en": "© 2026 helloBusan — a demo travel-concierge site.", "de": "© 2026 helloBusan — eine Demo-Reise-Concierge-Website.", "ko": "© 2026 helloBusan — 데모 여행 컨시어지 사이트입니다."}, "common.ph.name": {"en": "Your name", "de": "Ihr Name", "ko": "이름을 입력하세요"}, "common.ph.email": {"en": "you@example.com", "de": "sie@beispiel.com", "ko": "you@example.com"}};
+let currentLang = localStorage.getItem('hb_lang') || 'en';
+
+function applyI18n(){
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const entry = I18N[key];
+    if(entry && entry[currentLang] !== undefined) el.textContent = entry[currentLang];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    const entry = I18N[key];
+    if(entry && entry[currentLang] !== undefined) el.setAttribute('placeholder', entry[currentLang]);
+  });
+  document.getElementById('langBtnLabel').textContent = currentLang.toUpperCase();
+  document.querySelectorAll('#langMenu button').forEach(b => b.classList.toggle('active', b.dataset.lang === currentLang));
+}
+function setLang(lang){
+  currentLang = lang;
+  localStorage.setItem('hb_lang', lang);
+  applyI18n();
+}
+document.getElementById('langBtn').addEventListener('click', e => {
+  e.stopPropagation();
+  document.getElementById('langSwitch').classList.toggle('open');
+});
+document.getElementById('langMenu').addEventListener('click', e => {
+  const b = e.target.closest('button[data-lang]'); if(!b) return;
+  setLang(b.dataset.lang);
+  document.getElementById('langSwitch').classList.remove('open');
+});
+document.addEventListener('click', e => {
+  if(!e.target.closest('#langSwitch')) document.getElementById('langSwitch').classList.remove('open');
+});
+
 /* ---------------- INIT ---------------- */
 renderStays(); renderFoods();
 wireChips("stayChips", renderStays); wireChips("foodChips", renderFoods);
 updateFare();
+applyI18n();
 document.getElementById("date").value = new Date().toISOString().split("T")[0];
 goTo(PAGES.includes(location.hash.replace("#","")) ? location.hash.replace("#","") : "home");
 </script>
